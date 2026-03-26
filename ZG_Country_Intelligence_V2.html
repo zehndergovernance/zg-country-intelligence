@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Country Intelligence — Zehnder Governance</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+:root{--ink:#07100a;--forest:#0b1f12;--pine:#132d1a;--moss:#245430;--gold:#c08c28;--gold-l:#d4a94a;--border:rgba(192,140,40,.13);--r:10px;}
+*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{background:var(--ink);color:#fff;font-family:'Outfit',sans-serif;min-height:100vh;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+#loading{position:fixed;inset:0;background:var(--ink);z-index:9998;display:flex;align-items:center;justify-content:center;}
+#loading.gone{display:none;}
+.spin{width:32px;height:32px;border:2.5px solid rgba(192,140,40,.2);border-top-color:var(--gold);border-radius:50%;animation:sp .8s linear infinite;}
+@keyframes sp{to{transform:rotate(360deg)}}
+#auth{position:fixed;inset:0;background:var(--ink);z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;}
+#auth.gone{display:none;}
+.abox{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:420px;width:100%;text-align:center;}
+.alogo{font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:24px;}
+.abox h2{font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:6px;}
+.abox p{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:24px;line-height:1.6;}
+.ainput{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:11px 14px;font-size:14px;color:#fff;font-family:'Outfit',sans-serif;margin-bottom:10px;outline:none;}
+.ainput:focus{border-color:rgba(192,140,40,.4);}
+.ainput::placeholder{color:rgba(255,255,255,.3);}
+.abtn{width:100%;background:var(--gold);color:var(--ink);border:none;border-radius:8px;padding:12px;font-size:14px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;transition:all .2s;}
+.abtn:hover{background:var(--gold-l);}
+.aerr{font-size:12px;color:#e07070;margin-top:6px;display:none;}
+.adiv{border:none;border-top:1px solid rgba(255,255,255,.08);margin:18px 0;}
+.ainfo{font-size:12px;color:rgba(255,255,255,.3);line-height:1.6;}
+.ainfo a{color:var(--gold);}
+.noaccess{text-align:center;}
+.big{font-size:48px;margin-bottom:16px;}
+.noaccess h2{font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:8px;}
+.noaccess p{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:20px;}
+.buybtn{display:inline-block;background:var(--gold);color:var(--ink);padding:11px 24px;border-radius:8px;font-size:14px;font-weight:600;}
+
+header{background:rgba(11,31,18,.98);border-bottom:1px solid var(--border);padding:0 24px;height:58px;display:flex;align-items:center;position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;}
+.lm{width:32px;height:32px;border-radius:7px;background:linear-gradient(145deg,var(--moss),var(--pine));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--gold);}
+.ln{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;}.ln em{color:var(--gold);font-style:normal;}
+.hplan{margin-left:10px;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(192,140,40,.12);color:var(--gold);border:1px solid rgba(192,140,40,.2);}
+.hr{margin-left:auto;display:flex;align-items:center;gap:8px;}
+#uemail{font-size:11px;color:rgba(255,255,255,.25);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.hback{font-size:12px;color:rgba(255,255,255,.35);padding:5px 10px;border:1px solid rgba(255,255,255,.08);border-radius:6px;}
+.hout{font-size:12px;color:rgba(255,255,255,.25);padding:5px 10px;border:1px solid rgba(255,255,255,.06);border-radius:6px;cursor:pointer;background:none;font-family:'Outfit',sans-serif;}
+
+.wrap{max-width:1000px;margin:0 auto;padding:28px 20px 64px;}
+.hero{background:linear-gradient(135deg,rgba(19,45,26,.9),rgba(11,31,18,.98));border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:24px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,28px);font-weight:600;margin-bottom:6px;}
+.hero p{font-size:13.5px;color:rgba(255,255,255,.48);font-weight:300;}
+.sh{font-size:10.5px;color:var(--gold);font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06);}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px;font-size:12px;}
+.litem{display:flex;align-items:center;gap:6px;}
+.ldot{width:10px;height:10px;border-radius:2px;}
+.ldot.ok{background:#27ae60;}.ldot.med{background:#e67e22;}.ldot.high{background:#c0392b;}.ldot.crit{background:#7b0000;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;margin-bottom:24px;}
+.ctable th{text-align:left;font-size:11px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.07);}
+.ctable td{padding:12px 12px;border-bottom:1px solid rgba(255,255,255,.05);font-size:13px;vertical-align:middle;}
+.ctable tr:hover td{background:rgba(255,255,255,.02);}
+.cflag{font-size:20px;}
+.cname{font-weight:600;color:#fff;}
+.claw{font-size:11px;color:rgba(255,255,255,.4);}
+.cbar-wrap{display:flex;align-items:center;gap:8px;}
+.cbar{width:80px;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;}
+.cbar-fill{height:100%;border-radius:3px;}
+.cbar-fill.ok{background:#27ae60;}
+.cbar-fill.med{background:#e67e22;}
+.cbar-fill.high{background:#c0392b;}
+.cbar-fill.crit{background:#ff6b6b;}
+.cbar-n{font-size:12px;font-weight:700;}
+.cbar-n.ok{color:#6ecf90;}.cbar-n.med{color:#f39c12;}.cbar-n.high{color:#e74c3c;}.cbar-n.crit{color:#ff6b6b;}
+.cbadge{padding:3px 8px;border-radius:4px;font-size:11px;font-weight:700;}
+.cbadge.ok{background:rgba(39,174,96,.15);color:#6ecf90;}
+.cbadge.med{background:rgba(230,126,34,.15);color:#f39c12;}
+.cbadge.high{background:rgba(192,57,43,.15);color:#e74c3c;}
+.cbadge.crit{background:rgba(123,0,0,.2);color:#ff6b6b;}
+.adequacy-yes{font-size:11px;font-weight:700;color:#6ecf90;}
+.adequacy-no{font-size:11px;font-weight:700;color:#e74c3c;}
+.adequacy-part{font-size:11px;font-weight:700;color:#f39c12;}
+.tia-link{font-size:11.5px;font-weight:600;color:var(--gold);white-space:nowrap;}
+.tia-none{font-size:11px;color:rgba(255,255,255,.3);}
+.note{font-size:11px;color:rgba(255,255,255,.35);line-height:1.5;}
+
+.info-box{background:rgba(36,84,48,.1);border:1px solid rgba(36,84,48,.25);border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;}
+.info-box strong{color:#fff;}
+
+.upsell{background:rgba(192,140,40,.05);border:1px solid rgba(192,140,40,.15);border-radius:var(--r);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:28px;}
+.upsell h3{font-family:'Cormorant Garamond',serif;font-size:17px;color:#fff;margin-bottom:3px;}
+.upsell p{font-size:12.5px;color:rgba(255,255,255,.4);font-weight:300;}
+.ubtn{background:var(--gold);color:var(--ink);padding:9px 18px;border-radius:7px;font-size:13px;font-weight:600;white-space:nowrap;}
+
+@media(max-width:700px){.ctable{display:block;overflow-x:auto;}}
+</style>
+</head>
+<body>
+
+<div id="loading"><div class="spin"></div></div>
+
+<div id="auth">
+  <div class="abox">
+    <div class="alogo">Zehnder Governance</div>
+    <div id="loginBox">
+      <h2>Country Intelligence</h2>
+      <p>Melden Sie sich an um auf die Länderbewertungen und Risikoscores zuzugreifen.</p>
+      <input type="email" id="emailIn" class="ainput" placeholder="E-Mail-Adresse">
+      <input type="password" id="passIn" class="ainput" placeholder="Passwort">
+      <div class="aerr" id="aerr"></div>
+      <button class="abtn" onclick="doLogin()">Einloggen →</button>
+      <div class="adiv"></div>
+      <div class="ainfo">Zugang über <a href="https://buy.stripe.com/eVq28jeRMggpfetdjG5Rm04">Transfer Impact Modul (CHF 299)</a> oder <a href="https://buy.stripe.com/9B6bIT5hc5BLeap7Zm5Rm00">Flatrate Standard (CHF 149/Mt.)</a></div>
+    </div>
+    <div id="noBox" class="noaccess" style="display:none">
+      <div class="big">🔒</div>
+      <h2>Kein Zugang</h2>
+      <p>Country Intelligence ist im Transfer Impact Modul oder in der Compliance Flatrate enthalten.</p>
+      <a href="https://buy.stripe.com/eVq28jeRMggpfetdjG5Rm04" class="buybtn">TIA Modul — CHF 299 →</a>
+      <div class="adiv"></div>
+      <div class="ainfo"><span style="cursor:pointer;color:var(--gold);" onclick="doLogout()">Anderes Konto</span></div>
+    </div>
+  </div>
+</div>
+
+<header>
+  <a href="https://zehndergovernance.com" class="logo"><div class="lm">Z</div><div class="ln">ZEHNDER <em>GOVERNANCE</em></div></a>
+  <span class="hplan">Country Intelligence</span>
+  <div class="hr">
+    <span id="uemail"></span>
+    <a href="https://zg-portal-tia.vercel.app" class="hback">← TIA Modul</a>
+    <button class="hout" onclick="doLogout()">Ausloggen</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>🌍 Country Intelligence — Risikoscores für 13 Jurisdiktionen</h1>
+    <p>EDPB-basierte Risikoanalyse: Staatliche Überwachung, Gerichtsunabhängigkeit, Rechtsstaatlichkeit, Datenschutzrecht. Aktualisiert März 2026. Basis für Ihre Transfer Impact Assessments.</p>
+  </div>
+
+  <div class="info-box">
+    <strong>Wie wird der Risikoscore berechnet?</strong> Wir verwenden 5 EDPB-Kriterien aus der Empfehlung 01/2020: (1) Staatliche Zugriffsrechte auf Daten, (2) Unabhängigkeit der Justiz, (3) Rechtsstaatlichkeit & Demokratieindex, (4) Qualität des nationalen Datenschutzrechts, (5) Internationale Abkommen. Score 0–8: Gering · 9–18: Mittel · 19–28: Erhöht · 29–40: Kritisch.
+  </div>
+
+  <div class="sh">Länderbewertungen — 13 Jurisdiktionen</div>
+
+  <div class="legend">
+    <div class="litem"><div class="ldot ok"></div>Gering (0–8)</div>
+    <div class="litem"><div class="ldot med"></div>Mittel (9–18)</div>
+    <div class="litem"><div class="ldot high"></div>Erhöht (19–28)</div>
+    <div class="litem"><div class="ldot crit"></div>Kritisch (29–40)</div>
+  </div>
+
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Land</th>
+        <th>Datenschutzgesetz</th>
+        <th>Risikoscore</th>
+        <th>Risiko</th>
+        <th>EU-Angemessenheit</th>
+        <th>TIA-Dokument</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="cflag">🇺🇸</span> <span class="cname">USA</span><br><span class="note">FISA 702 · Cloud Act</span></td>
+        <td><span class="claw">ECPA · FISA · Privacy Act</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill high" style="width:55%"></div></div><span class="cbar-n high">22/40</span></div></td>
+        <td><span class="cbadge high">Erhöht</span></td>
+        <td><span class="adequacy-part">Bedingt (DPF)</span><br><span class="note">Nur zertifizierte Empfänger</span></td>
+        <td><a href="https://drive.google.com/file/d/1_4J_yeJS2Va75N9n_KMCKuQFVKKmtNFU/view" target="_blank" class="tia-link">↓ EN</a> · <a href="https://drive.google.com/file/d/1YvGwBpnQiq2z3E0b7-Plttc-5EUejV-S/view" target="_blank" class="tia-link">↓ DE</a></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇨🇳</span> <span class="cname">China</span><br><span class="note">PIPL · CSL · DSL</span></td>
+        <td><span class="claw">PIPL 2021 · Cybersecurity Law</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill crit" style="width:90%"></div></div><span class="cbar-n crit">36/40</span></div></td>
+        <td><span class="cbadge crit">Kritisch</span></td>
+        <td><span class="adequacy-no">Nein</span><br><span class="note">CAC-Sicherheitsbewertung</span></td>
+        <td><a href="https://drive.google.com/file/d/1_4J_yeJS2Va75N9n_KMCKuQFVKKmtNFU/view" target="_blank" class="tia-link">↓ EN</a> · <a href="https://drive.google.com/file/d/1YvGwBpnQiq2z3E0b7-Plttc-5EUejV-S/view" target="_blank" class="tia-link">↓ DE</a></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇮🇳</span> <span class="cname">Indien</span><br><span class="note">DPDPA 2023</span></td>
+        <td><span class="claw">DPDPA 2023 · IT Act</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill med" style="width:42%"></div></div><span class="cbar-n med">17/40</span></div></td>
+        <td><span class="cbadge med">Mittel</span></td>
+        <td><span class="adequacy-no">Nein</span><br><span class="note">In Prüfung</span></td>
+        <td><a href="https://drive.google.com/file/d/1nENIsQMbv7-ilJQSX-8ldek7eDp1nEjJ/view" target="_blank" class="tia-link">↓ EN</a> · <a href="https://drive.google.com/file/d/1KrexvqhmfOyI0qDqn59sq7JjNgBc_BtY/view" target="_blank" class="tia-link">↓ DE</a></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇧🇷</span> <span class="cname">Brasilien</span><br><span class="note">LGPD</span></td>
+        <td><span class="claw">LGPD · Lei 13.709/2018</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill med" style="width:35%"></div></div><span class="cbar-n med">14/40</span></div></td>
+        <td><span class="cbadge med">Mittel</span></td>
+        <td><span class="adequacy-no">Nein</span><br><span class="note">In Prüfung</span></td>
+        <td><a href="https://drive.google.com/file/d/1nENIsQMbv7-ilJQSX-8ldek7eDp1nEjJ/view" target="_blank" class="tia-link">↓ EN</a> · <a href="https://drive.google.com/file/d/1KrexvqhmfOyI0qDqn59sq7JjNgBc_BtY/view" target="_blank" class="tia-link">↓ DE</a></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇻🇳</span> <span class="cname">Vietnam</span><br><span class="note">PDPD 2023</span></td>
+        <td><span class="claw">PDPD · Cybersecurity Law</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill high" style="width:67%"></div></div><span class="cbar-n high">27/40</span></div></td>
+        <td><span class="cbadge high">Erhöht</span></td>
+        <td><span class="adequacy-no">Nein</span></td>
+        <td><a href="https://drive.google.com/file/d/1nENIsQMbv7-ilJQSX-8ldek7eDp1nEjJ/view" target="_blank" class="tia-link">↓ EN</a> · <a href="https://drive.google.com/file/d/1KrexvqhmfOyI0qDqn59sq7JjNgBc_BtY/view" target="_blank" class="tia-link">↓ DE</a></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇷🇸</span> <span class="cname">Serbien</span></td>
+        <td><span class="claw">ZZPL (DSGVO-äquivalent)</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill ok" style="width:20%"></div></div><span class="cbar-n ok">8/40</span></div></td>
+        <td><span class="cbadge ok">Gering</span></td>
+        <td><span class="adequacy-yes">Ja (EU-Beschluss)</span></td>
+        <td><a href="https://drive.google.com/file/d/19QJAo7Xk9WX2RO1SViAH9JBwcm4PNOUe/view" target="_blank" class="tia-link">↓ EN</a> · <a href="https://drive.google.com/file/d/1b85qcXVX2kejVg6xhvHiS_UnAYmjSP0_/view" target="_blank" class="tia-link">↓ DE</a></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇸🇬</span> <span class="cname">Singapur</span></td>
+        <td><span class="claw">PDPA 2012/2021</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill med" style="width:30%"></div></div><span class="cbar-n med">12/40</span></div></td>
+        <td><span class="cbadge med">Mittel</span></td>
+        <td><span class="adequacy-no">Nein</span></td>
+        <td><span class="tia-none">→ Allgemeine Vorlage</span></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇦🇺</span> <span class="cname">Australien</span></td>
+        <td><span class="claw">Privacy Act 1988 (reformed 2024)</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill med" style="width:25%"></div></div><span class="cbar-n med">10/40</span></div></td>
+        <td><span class="cbadge med">Mittel</span></td>
+        <td><span class="adequacy-no">Nein</span><br><span class="note">Reform 2024 läuft</span></td>
+        <td><span class="tia-none">→ Allgemeine Vorlage</span></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇰🇷</span> <span class="cname">Südkorea</span></td>
+        <td><span class="claw">PIPA (reformed 2023)</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill ok" style="width:20%"></div></div><span class="cbar-n ok">8/40</span></div></td>
+        <td><span class="cbadge ok">Gering</span></td>
+        <td><span class="adequacy-yes">Ja (EU-Beschluss 2021)</span></td>
+        <td><span class="tia-none">Kein TIA nötig</span></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇯🇵</span> <span class="cname">Japan</span></td>
+        <td><span class="claw">APPI (reformed 2022)</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill ok" style="width:15%"></div></div><span class="cbar-n ok">6/40</span></div></td>
+        <td><span class="cbadge ok">Gering</span></td>
+        <td><span class="adequacy-yes">Ja (EU-Beschluss 2019)</span></td>
+        <td><span class="tia-none">Kein TIA nötig</span></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇬🇧</span> <span class="cname">Grossbritannien</span></td>
+        <td><span class="claw">UK GDPR · Data Protection Act 2018</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill ok" style="width:17%"></div></div><span class="cbar-n ok">7/40</span></div></td>
+        <td><span class="cbadge ok">Gering</span></td>
+        <td><span class="adequacy-yes">Ja (EU-Beschluss 2021)</span></td>
+        <td><span class="tia-none">UK IDTA empfohlen</span></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇭🇰</span> <span class="cname">Hongkong</span></td>
+        <td><span class="claw">PDPO (amended 2021)</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill high" style="width:52%"></div></div><span class="cbar-n high">21/40</span></div></td>
+        <td><span class="cbadge high">Erhöht</span></td>
+        <td><span class="adequacy-no">Nein</span><br><span class="note">Sicherheitsgesetz 2020</span></td>
+        <td><span class="tia-none">→ Allgemeine Vorlage</span></td>
+      </tr>
+      <tr>
+        <td><span class="cflag">🇨🇦</span> <span class="cname">Kanada</span></td>
+        <td><span class="claw">PIPEDA / Law 25 (QC)</span></td>
+        <td><div class="cbar-wrap"><div class="cbar"><div class="cbar-fill ok" style="width:20%"></div></div><span class="cbar-n ok">8/40</span></div></td>
+        <td><span class="cbadge ok">Gering</span></td>
+        <td><span class="adequacy-yes">Ja (kommerziell)</span></td>
+        <td><span class="tia-none">Kein TIA nötig</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sh">📄 TIA-Dokumente herunterladen</div>
+  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:13px;color:rgba(255,255,255,.5);">
+    Für ein vollständiges TIA mit Schritt-für-Schritt-Anleitung und vorausgefüllten Länderdokumenten →
+    <a href="https://zg-portal-tia.vercel.app" style="color:var(--gold);font-weight:600;">Transfer Impact Modul öffnen →</a>
+  </div>
+
+  <div class="upsell">
+    <div>
+      <h3>📋 Transfer Impact Modul — vollständige TIAs in 20 Min.</h3>
+      <p>Vorausgefüllte Word-Dokumente für jedes Land, Schritt-für-Schritt-Anleitung, alle Begleitdokumente.</p>
+    </div>
+    <a href="https://zg-portal-tia.vercel.app" class="ubtn">TIA Modul öffnen →</a>
+  </div>
+
+</div>
+
+<script>
+const SB_URL='https://rjvdmyjuqtchznlhffzo.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqdmRteWp1cXRjaHpubGhmZnpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNTkzNDksImV4cCI6MjA4NjkzNTM0OX0.iJWzPFxAI-ms7qCD6s0-Sxuqksy0ix1X-l1uNmxCZu0';
+const PLANS=['tia','standard','enterprise'];
+const {createClient}=supabase;
+const sb=createClient(SB_URL,SB_KEY);
+
+async function init(){
+  const {data:{session}}=await sb.auth.getSession();
+  if(session){document.getElementById('uemail').textContent=session.user.email;await checkAccess(session.user.id);}
+  else{document.getElementById('loading').classList.add('gone');}
+}
+
+async function checkAccess(uid){
+  const {data}=await sb.from('user_subscriptions').select('plan,status').eq('user_id',uid).eq('status','active');
+  document.getElementById('loading').classList.add('gone');
+  const ok=data?.some(s=>PLANS.includes(s.plan));
+  if(ok){document.getElementById('auth').classList.add('gone');}
+  else{document.getElementById('loginBox').style.display='none';document.getElementById('noBox').style.display='block';}
+}
+
+async function doLogin(){
+  const email=document.getElementById('emailIn').value.trim();
+  const pw=document.getElementById('passIn').value;
+  const err=document.getElementById('aerr');
+  err.style.display='none';
+  const {data,error}=await sb.auth.signInWithPassword({email,password:pw});
+  if(error){err.textContent='Anmeldung fehlgeschlagen.';err.style.display='block';return;}
+  document.getElementById('uemail').textContent=data.user.email;
+  await checkAccess(data.user.id);
+}
+
+async function doLogout(){await sb.auth.signOut();location.reload();}
+document.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+init();
+</script>
+</body>
+</html>
