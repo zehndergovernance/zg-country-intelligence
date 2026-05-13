@@ -482,7 +482,7 @@ function renderTable(){
       <td>${c.adequacy?'<span class="adequacy-yes">✓ Ja</span>':'<span class="adequacy-no">Nein</span>'}</td>
       <td><span style="font-size:12px;color:${c.adequacy?'#81c784':'rgba(255,255,255,.6)'}">${c.tiaNeed}</span></td>
       <td>
-        <button class="detail-btn" onclick="toggleDetail(${i})">Details ▾</button>
+        <button class="detail-btn" data-detail-idx="${i}">Details ▾</button>
         <div class="detail-panel" id="detail-${i}">
           ${c.edpb.map(e=>`<div class="edpb-row"><span class="edpb-k">${e.k}</span><span class="edpb-v ${e.c}">${e.v}</span></div>`).join('')}
           <div style="margin-top:8px;font-size:11px;color:rgba(255,255,255,.4);font-style:italic;">${c.note}</div>
@@ -494,10 +494,19 @@ function renderTable(){
 
 function toggleDetail(i){
   const p=document.getElementById("detail-"+i);
+  if(!p) return;
   p.classList.toggle("open");
 }
+window.toggleDetail = toggleDetail;
 
 renderTable();
+
+// Delegated click-handler — robuster als inline onclick (kein CSP-Risiko, keine Scope-Edge-Cases).
+document.getElementById("countryBody").addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-detail-idx]");
+  if (!btn) return;
+  toggleDetail(+btn.dataset.detailIdx);
+});
 </script>
 
 <script>
