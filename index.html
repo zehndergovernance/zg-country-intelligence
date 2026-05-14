@@ -120,6 +120,77 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-we
   .formula{grid-template-columns:1fr;gap:8px;}
   .formula-op{display:none;}
 }
+
+/* ═══ K12b — 4-EEG Detail-Panel ═══ */
+.detail-panel{padding:0;background:transparent;border:none;}
+.detail-panel.open{display:block;}
+.dp-inner{background:rgba(11,31,18,.98);border:1px solid rgba(192,140,40,.2);border-radius:10px;padding:18px;font-size:13px;line-height:1.55;}
+.dp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:14px;}
+.dp-head-left{flex:1;}
+.dp-name{font-size:16px;font-weight:600;color:#fff;}
+.dp-law{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;}
+.dp-head-right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.dp-score-big{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;line-height:1;}
+
+.dp-update{padding:10px 14px;border-radius:6px;font-size:12px;line-height:1.5;margin-bottom:14px;border-left:3px solid;}
+.dp-update.crit{background:rgba(244,67,54,.08);border-color:#f44336;color:#ef9a9a;}
+.dp-update.warn{background:rgba(255,152,0,.08);border-color:#ff9800;color:#ffb74d;}
+.dp-update.info{background:rgba(33,150,243,.08);border-color:#42a5f5;color:#90caf9;}
+.dp-update.ok{background:rgba(76,175,80,.08);border-color:#4caf50;color:#a5d6a7;}
+.dp-update.neutral{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);}
+
+.dp-summary{background:rgba(192,140,40,.06);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 14px;margin-bottom:18px;}
+.dp-summary-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-l);margin-bottom:6px;}
+.dp-summary-text{color:#fff;font-size:13px;line-height:1.6;}
+
+.dp-section-divider{display:flex;align-items:center;gap:10px;margin:18px 0 12px;}
+.dp-section-divider::before,.dp-section-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08);}
+.dp-section-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+
+.eeg-cards{display:flex;flex-direction:column;gap:10px;}
+.eeg-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:12px 14px;}
+.eeg-card-head{display:grid;grid-template-columns:28px 1fr auto auto;align-items:center;gap:10px;margin-bottom:8px;}
+.eeg-letter{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:5px;background:rgba(192,140,40,.15);color:var(--gold-l);font-weight:700;font-size:12px;}
+.eeg-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.85);}
+.eeg-bar-segments{display:flex;gap:3px;}
+.eeg-segment{width:14px;height:8px;border-radius:2px;background:#E8E6DF;opacity:.18;}
+.eeg-segment.filled{opacity:1;}
+.eeg-segment.sev0.filled{background:#4caf50;}
+.eeg-segment.sev1.filled{background:#9ccc65;}
+.eeg-segment.sev2.filled{background:#ffb74d;}
+.eeg-segment.sev3.filled{background:#ff9800;}
+.eeg-segment.sev4.filled{background:#f44336;}
+.eeg-segment.sev5.filled{background:#b71c1c;}
+.eeg-score{font-size:11px;font-weight:600;color:rgba(255,255,255,.65);min-width:28px;text-align:right;}
+.eeg-text{font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.6;padding-left:34px;}
+
+.dp-sum-line{margin-top:12px;padding:10px 14px;background:rgba(192,140,40,.06);border-radius:6px;font-size:12px;color:rgba(255,255,255,.75);text-align:center;}
+.dp-sum-line strong{color:#fff;font-weight:700;}
+
+.context-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.context-tile{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:11px 13px;}
+.context-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:5px;}
+.context-value{font-size:12px;color:rgba(255,255,255,.75);line-height:1.55;}
+
+.dp-tia{margin-top:14px;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;}
+.dp-tia-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-l);margin-bottom:6px;}
+.dp-tia-text{font-size:12.5px;color:rgba(255,255,255,.78);line-height:1.6;}
+
+.dp-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06);}
+.copy-tia-btn{background:var(--gold);color:var(--ink);border:none;border-radius:6px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;}
+.copy-tia-btn:hover{background:var(--gold-l);}
+.copy-tia-btn.copied{background:#4caf50;color:#fff;}
+.template-link{display:inline-flex;align-items:center;padding:8px 14px;font-size:12px;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.15);border-radius:6px;transition:all .2s;}
+.template-link:hover{border-color:var(--gold);color:var(--gold);}
+
+.review-marker{background:rgba(255,193,7,.18);color:#ffd54f;padding:1px 6px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:.02em;}
+
+@media(max-width:800px){
+  .context-grid{grid-template-columns:1fr;}
+  .eeg-card-head{grid-template-columns:24px 1fr;row-gap:6px;}
+  .eeg-bar-segments,.eeg-score{grid-column:1/-1;}
+  .eeg-text{padding-left:0;}
+}
 </style>
 </head>
 <body>
@@ -264,10 +335,10 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-we
 <section>
   <div class="sw">
     <div class="sl">Länderbewertungen</div>
-    <h2>13 Jurisdiktionen — EDPB-basierte Risikoscores</h2>
+    <h2>15 Jurisdiktionen — EDPB-basierte Risikoscores</h2>
     <div class="divider"></div>
-    <p style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:4px;">Bewertung nach 5 EDPB-Kriterien (Empfehlung 01/2020): Staatlicher Zugriff · Gerichtsunabhängigkeit · Verhältnismässigkeit · Datenschutzrecht · Betroffenenrechte. Score 0 (kein Risiko) bis 1.0 (kritisch).</p>
-    <p style="font-size:13px;color:var(--gold);margin-bottom:20px;">Klicken Sie auf «Details» um die EDPB-Kriterien-Aufschlüsselung zu sehen.</p>
+    <p style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:4px;">Risikobewertung nach den 4 <strong style="color:rgba(255,255,255,.65);">European Essential Guarantees</strong> (EDPB Recommendations 02/2020): Klare Regeln · Verhältnismässigkeit · Unabhängige Aufsicht · Wirksame Rechtsbehelfe. Methodik-Rahmen: EDPB Recommendations 01/2020 (6-Schritte-TIA). Score 0.00 (kein Risiko) bis 1.00 (kritisch).</p>
+    <p style="font-size:13px;color:var(--gold);margin-bottom:20px;">Klicken Sie auf «Details» — die 4 EEG ergeben den Score, getrennt davon Kontextfaktoren zur Einordnung.</p>
 
     <table class="ctable">
       <thead>
@@ -402,50 +473,284 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-we
 </section>
 
 <footer style="padding:32px 24px;border-top:1px solid rgba(255,255,255,.04);text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,.2);">© 2026 Zehnder Governance · Country Intelligence & TIA · Stand März 2026 · Indikative Ersteinschätzung — keine Rechtsberatung</p>
+  <p style="font-size:12px;color:rgba(255,255,255,.2);">© 2026 Zehnder Governance · Country Intelligence & TIA · Stand Mai 2026 · Indikative Ersteinschätzung — keine Rechtsberatung</p>
 </footer>
 
 <script>
+// K12b — 4-EEG-Schema (EDPB Recommendations 02/2020, Absatz 24)
+// Score-Formel: Summe(eeg) ÷ 20 = Länderrisikoscore (0.00-1.00)
+// Risikostufen: low ≤0.25 · med >0.25–0.5 · high >0.5–0.75 · crit >0.75
+// Methodik-Rahmen: EDPB Recommendations 01/2020 (6-Schritte-TIA)
+const EEG_LABELS = [
+  'Klare, präzise & zugängliche Regeln',      // A
+  'Notwendigkeit & Verhältnismässigkeit',     // B
+  'Unabhängiger Aufsichtsmechanismus',        // C
+  'Wirksame Rechtsbehelfe'                    // D
+];
+
 const COUNTRIES = [
-  {flag:"🇺🇸",name:"USA",law:"ECPA · FISA 702 · Cloud Act",score:0.55,riskKey:"high",adequacy:false,tiaNeed:"Ja (ausser DPF-zertifiziert)",
-   edpb:[{k:"Staatlicher Zugriff",v:"Hoch",c:"ev-high"},{k:"Verhältnismässigkeit",v:"Mittel",c:"ev-mid"},{k:"Gerichtsunabhängigkeit",v:"Mittel (DPF: DPRC)",c:"ev-mid"},{k:"Datenschutzrecht",v:"Kein allg. Bundesgesetz",c:"ev-high"},{k:"Betroffenenrechte",v:"Mittel (DPF)",c:"ev-mid"}],
-   note:"DPF-zertifiziert? → dataprivacyframework.gov prüfen. Falls ja: kein TIA. FISA 702 + CLOUD Act = Hauptrisiko."},
-  {flag:"🇨🇳",name:"China",law:"PIPL · CSL · DSL",score:0.90,riskKey:"crit",adequacy:false,tiaNeed:"Ja — zwingend",
-   edpb:[{k:"Staatlicher Zugriff",v:"Kritisch",c:"ev-crit"},{k:"Verhältnismässigkeit",v:"Kritisch",c:"ev-crit"},{k:"Gerichtsunabhängigkeit",v:"Nicht gegeben",c:"ev-crit"},{k:"Datenschutzrecht",v:"PIPL vorhanden",c:"ev-mid"},{k:"Betroffenenrechte",v:"Nachrangig ggü. Sicherheit",c:"ev-high"}],
-   note:"Kritisches Risiko. Transfer auf Notwendigkeit prüfen. E2E-Verschlüsselung (Schlüssel in EU) zwingend."},
-  {flag:"🇮🇳",name:"Indien",law:"DPDPA 2023 · IT Act",score:0.43,riskKey:"mid",adequacy:false,tiaNeed:"Ja",
-   edpb:[{k:"Staatlicher Zugriff",v:"Mittel (breite Ausnahmen)",c:"ev-mid"},{k:"Verhältnismässigkeit",v:"Mittel",c:"ev-mid"},{k:"Gerichtsunabhängigkeit",v:"Mittel-hoch",c:"ev-mid"},{k:"Datenschutzrecht",v:"DPDPA 2023 in Kraft",c:"ev-low"},{k:"Behörde (DPDB)",v:"Noch nicht operationell",c:"ev-mid"}],
-   note:"DPDPA 2023 in Kraft. Rules Q1 2026. Board ab Q2 2026. EU SCCs + Schutzmassnahmen."},
-  {flag:"🇧🇷",name:"Brasilien",law:"LGPD",score:0.35,riskKey:"mid",adequacy:false,tiaNeed:"Ja",
-   edpb:[{k:"Staatlicher Zugriff",v:"Niedrig-mittel",c:"ev-low"},{k:"Verhältnismässigkeit",v:"Mittel",c:"ev-mid"},{k:"Gerichtsunabhängigkeit",v:"Mittel",c:"ev-mid"},{k:"Datenschutzrecht",v:"LGPD — DSGVO-ähnlich",c:"ev-low"},{k:"ANPD",v:"Operationell, Enforcement steigt",c:"ev-mid"}],
-   note:"LGPD gut an DSGVO angelehnt. EU SCCs ausreichend. Standardmassnahmen."},
-  {flag:"🇻🇳",name:"Vietnam",law:"PDPD 2023 · Cybersecurity Law",score:0.68,riskKey:"high",adequacy:false,tiaNeed:"Ja — erhöhte Massnahmen",
-   edpb:[{k:"Staatlicher Zugriff",v:"Hoch (Öffentliche Sicherheit)",c:"ev-high"},{k:"Verhältnismässigkeit",v:"Hoch (begrenzte Kontrolle)",c:"ev-high"},{k:"Gerichtsunabhängigkeit",v:"Nicht gegeben (Staatsbehörde)",c:"ev-crit"},{k:"Datenschutzrecht",v:"PDPD 2023 in Kraft",c:"ev-mid"},{k:"Datenlokalisierung",v:"Für bestimmte Sektoren",c:"ev-high"}],
-   note:"Erhöhtes Risiko. Keine sensiblen Daten. E2E-Verschlüsselung empfohlen. Datenlokalisierung für Finanzen/Gesundheit."},
-  {flag:"🇷🇸",name:"Serbien",law:"ZZPL (DSGVO-äquivalent)",score:0.23,riskKey:"low",adequacy:true,tiaNeed:"Nein — Angemessenheitsbeschluss",
-   edpb:[{k:"Staatlicher Zugriff",v:"Niedrig",c:"ev-low"},{k:"Verhältnismässigkeit",v:"Niedrig",c:"ev-low"},{k:"Gerichtsunabhängigkeit",v:"Unabhängig (Poverenik)",c:"ev-low"},{k:"Datenschutzrecht",v:"DSGVO-äquivalent",c:"ev-low"},{k:"Betroffenenrechte",v:"DSGVO-äquivalent",c:"ev-low"}],
-   note:"EU-Angemessenheitsbeschluss 2013 in Kraft. Kein TIA erforderlich. AVV empfohlen."},
-  {flag:"🇸🇬",name:"Singapur",law:"PDPA 2012/2021",score:0.30,riskKey:"mid",adequacy:false,tiaNeed:"Ja",
-   edpb:[{k:"Staatlicher Zugriff",v:"Mittel",c:"ev-mid"},{k:"Verhältnismässigkeit",v:"Niedrig-mittel",c:"ev-low"},{k:"Gerichtsunabhängigkeit",v:"Niedrig",c:"ev-low"},{k:"Datenschutzrecht",v:"PDPA — fortschrittlich",c:"ev-low"},{k:"Enforcement (PDPC)",v:"Aktiv",c:"ev-low"}],
-   note:"Fortschrittliches Datenschutzrecht. EU SCCs + Standardmassnahmen ausreichend."},
-  {flag:"🇦🇺",name:"Australien",law:"Privacy Act 1988 (Reform 2024)",score:0.25,riskKey:"low",adequacy:false,tiaNeed:"Ja (Standardmassnahmen)",
-   edpb:[{k:"Staatlicher Zugriff",v:"Mittel",c:"ev-mid"},{k:"Verhältnismässigkeit",v:"Niedrig-mittel",c:"ev-low"},{k:"Gerichtsunabhängigkeit",v:"Niedrig",c:"ev-low"},{k:"Datenschutzrecht",v:"Privacy Act Reform 2024",c:"ev-low"},{k:"OAIC",v:"Operationell",c:"ev-low"}],
-   note:"Privacy Act Reform 2024 läuft. EU SCCs + Standardmassnahmen."},
-  {flag:"🇰🇷",name:"Südkorea",law:"PIPA (Reform 2023)",score:0.20,riskKey:"low",adequacy:true,tiaNeed:"Nein — Angemessenheitsbeschluss",
-   edpb:[{k:"Staatlicher Zugriff",v:"Niedrig",c:"ev-low"},{k:"Verhältnismässigkeit",v:"Niedrig",c:"ev-low"},{k:"Gerichtsunabhängigkeit",v:"Unabhängig (PIPC)",c:"ev-low"},{k:"Datenschutzrecht",v:"PIPA — robust",c:"ev-low"},{k:"Betroffenenrechte",v:"Umfassend",c:"ev-low"}],
-   note:"EU-Angemessenheitsbeschluss 2021. Kein TIA erforderlich."},
-  {flag:"🇯🇵",name:"Japan",law:"APPI (Reform 2022)",score:0.15,riskKey:"low",adequacy:true,tiaNeed:"Nein — Angemessenheitsbeschluss",
-   edpb:[{k:"Staatlicher Zugriff",v:"Niedrig",c:"ev-low"},{k:"Verhältnismässigkeit",v:"Niedrig",c:"ev-low"},{k:"Gerichtsunabhängigkeit",v:"Unabhängig (PPC)",c:"ev-low"},{k:"Datenschutzrecht",v:"APPI — robust",c:"ev-low"},{k:"Betroffenenrechte",v:"Umfassend",c:"ev-low"}],
-   note:"EU-Angemessenheitsbeschluss 2019. Kein TIA erforderlich."},
-  {flag:"🇬🇧",name:"Grossbritannien",law:"UK GDPR · DPA 2018",score:0.18,riskKey:"low",adequacy:true,tiaNeed:"Nein (EU→UK). UK IDTA für UK→Drittland.",
-   edpb:[{k:"Staatlicher Zugriff",v:"Niedrig-mittel",c:"ev-low"},{k:"Verhältnismässigkeit",v:"Niedrig",c:"ev-low"},{k:"Gerichtsunabhängigkeit",v:"Unabhängig (ICO)",c:"ev-low"},{k:"Datenschutzrecht",v:"UK GDPR",c:"ev-low"},{k:"ICO Enforcement",v:"Aktiv",c:"ev-low"}],
-   note:"EU-Angemessenheitsbeschluss 2021 (Review läuft). Für UK-seitige Drittlandtransfers: UK IDTA."},
-  {flag:"🇭🇰",name:"Hongkong",law:"PDPO (Amendment 2021)",score:0.53,riskKey:"high",adequacy:false,tiaNeed:"Ja — erhöhte Massnahmen",
-   edpb:[{k:"Staatlicher Zugriff",v:"Erhöht (Sicherheitsgesetz 2020)",c:"ev-high"},{k:"Verhältnismässigkeit",v:"Erhöht",c:"ev-high"},{k:"Gerichtsunabhängigkeit",v:"Beeinträchtigt",c:"ev-high"},{k:"Datenschutzrecht",v:"PDPO vorhanden",c:"ev-mid"},{k:"PCPD",v:"Operationell",c:"ev-mid"}],
-   note:"Sicherheitsgesetz 2020 erhöht Risiko massgeblich. Transfer kritisch prüfen."},
-  {flag:"🇨🇦",name:"Kanada",law:"PIPEDA / Law 25 (QC)",score:0.20,riskKey:"low",adequacy:true,tiaNeed:"Nein — Angemessenheitsbeschluss",
-   edpb:[{k:"Staatlicher Zugriff",v:"Niedrig-mittel",c:"ev-low"},{k:"Verhältnismässigkeit",v:"Niedrig",c:"ev-low"},{k:"Gerichtsunabhängigkeit",v:"Unabhängig (OPC)",c:"ev-low"},{k:"Datenschutzrecht",v:"PIPEDA / Qc Law 25",c:"ev-low"},{k:"Betroffenenrechte",v:"Umfassend",c:"ev-low"}],
-   note:"EU-Angemessenheitsbeschluss (kommerziell). Kein TIA erforderlich."},
+  {code:'EU',flag:'🇪🇺',name:'EU / EWR',law:'DSGVO 2016/679',score:0.00,riskKey:'low',adequacy:true,
+   summary:'Binnenmarktrecht — kein Drittlandtransfer. Die DSGVO gilt unmittelbar, keine Transferbeschränkungen innerhalb EU/EWR. Kein TIA erforderlich.',
+   eeg:[0,0,0,0],
+   eegText:[
+     'Staatszugriff beruht durchgängig auf klaren, gesetzlich präzisen und öffentlich zugänglichen Rechtsgrundlagen. EU-Grundrechtecharta Art. 7, 8; nationale Gesetze mit Richtervorbehalt.',
+     'Behördenzugriff unterliegt strenger Notwendigkeits- und Verhältnismässigkeitsprüfung; kein Massenüberwachungsprogramm vergleichbar Drittländern. CJEU als wirksamer Hüter.',
+     'Vollständig unabhängige Aufsicht: EDPB plus nationale Datenschutzbehörden in jedem Mitgliedstaat.',
+     'Vollständige, durchsetzbare Rechtsbehelfe nach Art. 77–82 DSGVO; CJEU-Rechtsprechung robust.'
+   ],
+   context:{
+     adequacyNote:'Binnenmarkt — Angemessenheit nicht anwendbar',
+     mechanism:'Kein Transfer — DSGVO gilt unmittelbar',
+     currentDevelopments:'Digital Omnibus Paket (Vorschlag November 2025) im Gesetzgebungsverfahren — keine materiellen Änderungen vor 2027 erwartet',
+     supplementaryMeasures:'keine erforderlich'
+   },
+   tia:'Kein TIA für EU→EU. Für Verarbeitungen mit Drittlandbezug TIA für das jeweilige Empfängerland durchführen.'},
+
+  {code:'CH',flag:'🇨🇭',name:'Schweiz',law:'nDSG / revDSG (SR 235.1)',score:0.10,riskKey:'low',adequacy:true,
+   summary:'EU-Angemessenheitsbeschluss vorhanden. revDSG/nDSG seit 1.9.2023 vollständig in Kraft, weitgehend DSGVO-konform. EDÖB unabhängig. Sehr geringes Transferrisiko — bevorzugter Standort für DACH-KMU. Kein TIA für EU↔CH.',
+   eeg:[0,1,0,1],
+   eegText:[
+     'Staatszugriff (Nachrichtendienst NDG, fedpol) beruht auf klaren gesetzlichen Grundlagen mit Richtervorbehalt. Art. 13 BV schützt die Privatsphäre als Grundrecht.',
+     'Zugriff verhältnismässig und auf das Notwendige begrenzt. Der NDG hat Befugnisse, jedoch eng gefasst und parlamentarisch kontrolliert (Geschäftsprüfungsdelegation). Kein FISA-702-Äquivalent.',
+     'Der EDÖB ist unabhängig; seit dem nDSG 2023 mit verstärkten Untersuchungs- und Durchsetzungsbefugnissen inkl. verbindlicher Verfügungen.',
+     'Vollständiger Rechtsweg vor Schweizer Gerichten; Klage- und Beschwerderecht beim EDÖB; etablierte Durchsetzungspraxis.'
+   ],
+   context:{
+     adequacyNote:'EU-Angemessenheitsbeschluss (2000, im Lichte des nDSG bestätigt)',
+     mechanism:'Kein zusätzlicher Mechanismus für EU↔CH erforderlich',
+     currentDevelopments:'nDSG stabil; [REVIEW: Alex DPO — EDÖB-Enforcement-Praxis 2025/2026 als Monitoring-Punkt, low-prio]',
+     supplementaryMeasures:'für CH→Drittland: EDÖB-Standardvertragsklauseln + Länderbewertung'
+   },
+   tia:'Kein TIA für EU→CH oder CH→EU. Für CH→Drittland: TIA nach Art. 16 nDSG.'},
+
+  {code:'UK',flag:'🇬🇧',name:'Vereinigtes Königreich',law:'UK GDPR / DPA 2018',score:0.20,riskKey:'low',adequacy:true,
+   update:'✅ EU-Angemessenheitsbeschluss am 19.12.2025 erneuert, gültig bis 27.12.2031.',
+   summary:'EU-Angemessenheitsbeschluss am 19.12.2025 erneuert, gültig bis 27.12.2031. UK GDPR bleibt — auch nach dem Data (Use and Access) Act 2025 — eng an der DSGVO ausgerichtet. ICO unabhängig. Kein TIA für EU→UK erforderlich.',
+   eeg:[1,1,1,1],
+   eegText:[
+     'Staatszugriff beruht auf gesetzlicher Grundlage (Investigatory Powers Act 2016) mit definierten Verfahren. Klar geregelt, jedoch weiter gefasst als der EU-Standard.',
+     'IPA 2016 erlaubt Überwachungsbefugnisse mit richterlicher Kontrolle (Investigatory Powers Tribunal). Verhältnismässigkeit grundsätzlich gegeben; Bulk-Powers bleiben ein verbleibender Risikofaktor.',
+     'Das ICO (ab 2026 als „Information Commission" umstrukturiert) ist unabhängig; transparente Enforcement-Statistik. Der DUAA gibt dem Secretary of State neue Verordnungsbefugnisse — vom EDPB als zu beobachtender Punkt markiert.',
+     'Vollständige Rechtsbehelfe: Beschwerde beim ICO, Klagerecht vor englischen/schottischen Gerichten, Art. 79/82 UK GDPR entsprechend.'
+   ],
+   context:{
+     adequacyNote:'EU-Angemessenheitsbeschluss erneuert 19.12.2025, gültig bis 27.12.2031',
+     mechanism:'Kein TIA für EU→UK. UK IDTA nur für Transfers VON UK in Drittstaaten',
+     currentDevelopments:'✅ Data (Use and Access) Act 2025 in Kraft (19.6.2025), phasenweise Umsetzung; EU-Adäquanz trotz DUAA bestätigt. ICO-Leitlinien zu internationalen Transfers per 15.1.2026 aktualisiert',
+     supplementaryMeasures:'keine für EU→UK; bei UK→Drittland neuer DUAA-„data protection test" beachten'
+   },
+   tia:'Kein TIA für EU→UK. Bei UK→Drittland: UK IDTA oder EU SCCs + UK Addendum.'},
+
+  {code:'JP',flag:'🇯🇵',name:'Japan',law:'APPI 2022',score:0.20,riskKey:'low',adequacy:true,
+   summary:'EU-Angemessenheitsbeschluss seit 2019. APPI (2022 reformiert) weitgehend DSGVO-konform. PPC unabhängig und aktiv. Sehr geringes Transferrisiko. Kein TIA für EU→JP.',
+   eeg:[1,1,1,1],
+   eegText:[
+     'Staatszugriff beruht auf gesetzlicher Grundlage; konstitutionelles Grundrecht auf Privatsphäre. Klare Regeln, geringe Einschränkungen gegenüber EU-Standard.',
+     'Nachrichtendienste mit begrenzten Zugriffsrechten verglichen mit NSA/FISA; kein bekanntes Massenüberwachungsprogramm. Zugriff grundsätzlich verhältnismässig.',
+     'Die PPC (Personal Information Protection Commission) ist vollständig unabhängig; die APPI-Reform 2022 stärkt ihre Befugnisse erheblich.',
+     'Klagerecht nach APPI und allgemeinem Zivilrecht (Art. 709 CC); PPC-Beschwerdeverfahren; richterliche Kontrolle gesichert.'
+   ],
+   context:{
+     adequacyNote:'EU-Angemessenheitsbeschluss (2019)',
+     mechanism:'Kein TIA für EU→JP',
+     currentDevelopments:'APPI 2022 stabil; [REVIEW: Alex DPO — PPC-Reformstand Mai 2026 kurz prüfen, voraussichtlich unverändert]',
+     supplementaryMeasures:'keine für EU→JP'
+   },
+   tia:'Kein TIA für EU→JP. Für JP→Drittland: APPI Chapter IV.'},
+
+  {code:'KR',flag:'🇰🇷',name:'Südkorea',law:'PIPA 2023 (Amendment eff. März 2024)',score:0.20,riskKey:'low',adequacy:true,
+   update:'📋 PIPA Amendment (März 2024) in Kraft — Bussen bis 3% Jahresumsatz, Breach-Notification 72 h.',
+   summary:'EU-Angemessenheitsbeschluss seit 2021. PIPA (Amendment in Kraft März 2024) stärkt PIPC-Unabhängigkeit, Bussgelder bis 3% Jahresumsatz. Sehr starker Datenschutzstandard. Kein TIA für EU→KR.',
+   eeg:[1,1,1,1],
+   eegText:[
+     'Staatszugriff (Telekommunikationsüberwachung) beruht auf dem Communications Secrecy Protection Act mit Richtervorbehalt. Klar geregelt.',
+     'Der Geheimdienst NIS hat Abhörbefugnisse, jedoch mit parlamentarischer Kontrolle. Zugriff grundsätzlich verhältnismässig.',
+     'Die PIPC ist seit der PIPA-Novelle vollständig unabhängig vom Innenministerium; eigenständige Behörde mit ausreichenden Ressourcen.',
+     'PIPA Art. 55–58: Klagerecht bei PIPC und Gerichten, Sammelklagen möglich, Schadenersatz bei unbefugter Nutzung. Starke Durchsetzungspraxis.'
+   ],
+   context:{
+     adequacyNote:'EU-Angemessenheitsbeschluss (2021)',
+     mechanism:'Kein TIA für EU→KR',
+     currentDevelopments:'📋 PIPA Amendment (März 2024) in Kraft — Bussen bis 3% Jahresumsatz, Breach-Notification 72 h',
+     supplementaryMeasures:'keine für EU→KR'
+   },
+   tia:'Kein TIA für EU→KR. Für KR→Drittland: Art. 28(8) PIPA-Benachrichtigung.'},
+
+  {code:'CA',flag:'🇨🇦',name:'Kanada',law:'PIPEDA · Quebec Law 25',score:0.20,riskKey:'low',adequacy:true,
+   summary:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss vorhanden (gilt für PIPEDA-unterliegende kommerzielle Verarbeitungen). PIPEDA bundesweit, Quebec mit Law 25 (verschärft). Kein TIA für EU→CA im Anwendungsbereich des Beschlusses.',
+   eeg:[1,1,1,1],
+   eegText:[
+     'Staatszugriff beruht auf gesetzlicher Grundlage; CSIS Act, Anti-Terrorism-Gesetzgebung. Klar geregelt mit richterlicher Kontrolle. [REVIEW: Alex DPO]',
+     'Five-Eyes-Mitglied; Überwachungsbefugnisse vorhanden, jedoch mit verfassungsrechtlichen Schranken (Charter of Rights). [REVIEW: Alex DPO — Verhältnismässigkeits-Einschätzung prüfen]',
+     'Office of the Privacy Commissioner of Canada (OPC) unabhängig; Quebec mit eigener Behörde (CAI). [REVIEW: Alex DPO]',
+     'Klagerechte nach PIPEDA und Quebec Law 25; OPC-Beschwerdeverfahren. [REVIEW: Alex DPO — Wirksamkeit der Rechtsbehelfe gegen Staatszugriff prüfen]'
+   ],
+   context:{
+     adequacyNote:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss für PIPEDA-Bereich — Reichweite genau prüfen',
+     mechanism:'Kein TIA für EU→CA im Beschluss-Anwendungsbereich; ausserhalb: EU SCCs',
+     currentDevelopments:'[REVIEW: Alex DPO — Status Quebec Law 25 Umsetzung + etwaige PIPEDA-Reform Mai 2026]',
+     supplementaryMeasures:'[REVIEW: Alex DPO]'
+   },
+   tia:'[REVIEW: Alex DPO] Kein TIA für EU→CA im Anwendungsbereich des Angemessenheitsbeschlusses; ausserhalb EU SCCs + TIA.'},
+
+  {code:'RS',flag:'🇷🇸',name:'Serbien',law:'ZZPL',score:0.30,riskKey:'med',adequacy:true,
+   summary:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss vorhanden. ZZPL (Datenschutzgesetz) DSGVO-äquivalent ausgestaltet. Als jüngere Adäquanz weniger erprobt — Score etwas höher als etablierte Adäquanz-Länder.',
+   eeg:[1,2,1,2],
+   eegText:[
+     '[REVIEW: Alex DPO — Rechtsgrundlagen für Staatszugriff in Serbien prüfen]',
+     '[REVIEW: Alex DPO — Verhältnismässigkeit / Überwachungsbefugnisse prüfen]',
+     '[REVIEW: Alex DPO — Unabhängigkeit der serbischen Datenschutzbehörde (Poverenik) prüfen]',
+     '[REVIEW: Alex DPO — Rechtsbehelfe prüfen]'
+   ],
+   context:{
+     adequacyNote:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss — Bestätigung + Datum prüfen',
+     mechanism:'Kein TIA für EU→RS im Beschluss-Anwendungsbereich',
+     currentDevelopments:'[REVIEW: Alex DPO — ZZPL-Aktualität + EU-Beitrittsprozess-Stand Mai 2026]',
+     supplementaryMeasures:'[REVIEW: Alex DPO]'
+   },
+   tia:'[REVIEW: Alex DPO] Kein TIA für EU→RS im Anwendungsbereich des Angemessenheitsbeschlusses.'},
+
+  {code:'SG',flag:'🇸🇬',name:'Singapur',law:'PDPA 2012 (Amendment 2020)',score:0.35,riskKey:'med',adequacy:false,
+   summary:'Robustes Datenschutzrecht (PDPA, 2020 reformiert), PDPC unabhängig und aktiv. Kein EU-Angemessenheitsbeschluss, aber sehr gut für internationale Transfers geeignet — häufig bevorzugter APAC-Hub. TIA erforderlich.',
+   eeg:[1,2,2,2],
+   eegText:[
+     'Staatszugriff beruht auf gesetzlicher Grundlage (Internal Security Act, weitere Sicherheitsgesetze). Regeln vorhanden, jedoch teils weit gefasst; Official Secrets Act schränkt Transparenz ein.',
+     'Der ISA gewährt weitreichende Sicherheitsbefugnisse, gezielt eingesetzt; keine Massenüberwachung vergleichbar China. Verhältnismässigkeit mittlere Einstufung.',
+     'Die PDPC ist unabhängig und mit aktiver Enforcement-Praxis; PDPA Amendment 2020 stärkt ihre Befugnisse. Aufsicht über Sicherheitsbehörden jedoch begrenzt.',
+     'PDPA Third Schedule: Rechtsmittelweg über PDPC und High Court. Wirksamkeit der Rechtsbehelfe gegen Staatszugriff begrenzt.'
+   ],
+   context:{
+     adequacyNote:'Kein EU-Angemessenheitsbeschluss',
+     mechanism:'PDPC Model Data Protection Clauses (2023) oder EU SCCs + TIA',
+     currentDevelopments:'[REVIEW: Alex DPO — PDPC Guidelines / PDPA-Stand Mai 2026, voraussichtlich stabil]',
+     supplementaryMeasures:'EU SCCs + DPA, Verschlüsselung, Datensparsamkeit'
+   },
+   tia:'PDPC Model Clauses oder EU SCCs + DPA + kurzes TIA. Risikostufe niedrig–mittel.'},
+
+  {code:'BR',flag:'🇧🇷',name:'Brasilien',law:'LGPD (Lei 13.709/2018)',score:0.40,riskKey:'med',adequacy:false,
+   summary:'Kein EU-Angemessenheitsbeschluss, aber LGPD weitgehend DSGVO-konform. ANPD operativ und zunehmend aktiv. Demokratischer Rechtsstaat, keine Massenüberwachung vergleichbar China. TIA erforderlich.',
+   eeg:[2,2,2,2],
+   eegText:[
+     'Staatszugriff (Geheimdienst ABIN) beruht auf gesetzlicher Grundlage mit verfassungsrechtlichen Grenzen. Marco Civil da Internet als Rahmen. Regeln vorhanden, aber weniger präzise als EU-Standard.',
+     'Überwachungsbefugnisse existieren, jedoch mit verfassungsrechtlichen Schranken; brasilianische Gerichte haben Massnahmen in der Vergangenheit aufgehoben. Verhältnismässigkeit mittlere Einstufung.',
+     'Die ANPD ist seit 2021 operativ, formell unabhängig vom Präsidialamt; Ressourcen noch im Aufbau, Durchsetzung zunehmend aktiv.',
+     'Art. 18–22 LGPD: Klagerecht und Betroffenenrechte vergleichbar DSGVO; Sammelklagen möglich; ANPD-Beschwerden; richterliche Kontrolle gesichert.'
+   ],
+   context:{
+     adequacyNote:'Kein EU-Angemessenheitsbeschluss',
+     mechanism:'EU SCCs Modul 2 (oder Modul 1 je nach Rolle) + DPA/AVV',
+     currentDevelopments:'[REVIEW: Alex DPO — ANPD-Resolutionen / Enforcement-Stand Mai 2026]',
+     supplementaryMeasures:'EU SCCs + DPA, Verschlüsselung in Übertragung und Speicherung'
+   },
+   tia:'EU SCCs + DPA + kurzes TIA. Risikostufe niedrig–mittel. Ergänzende Massnahmen: Verschlüsselung.'},
+
+  {code:'AU',flag:'🇦🇺',name:'Australien',law:'Privacy Act 1988 (APPs)',score:0.40,riskKey:'med',adequacy:false,
+   update:'📋 Privacy Act Reform laufend (Review-Ergebnis 2024/2025) — neue Direktmarketing-Regeln, erweitertes Löschrecht, stärkere OAIC-Befugnisse.',
+   summary:'Solide Datenschutzgesetze (APPs), kein EU-Angemessenheitsbeschluss. Risikofaktor: TOLA Act 2018 und Data-Retention-Gesetzgebung erlauben weitreichenden Behördenzugriff. Privacy Act Reform laufend. TIA erforderlich.',
+   eeg:[2,2,2,2],
+   eegText:[
+     'Staatszugriff beruht auf gesetzlicher Grundlage, aber der TOLA Act 2018 erlaubt es Behörden, Dienstleister zur Einrichtung von Zugriffsmöglichkeiten zu verpflichten — die Präzision/Begrenzung der Regeln bleibt hinter dem EU-Standard zurück.',
+     'TOLA Act und Data-Retention-Regime: Behördenzugriff teils ohne vorherigen Richtervorbehalt. ASD mit weitreichenden Auslandsbefugnissen (Five-Eyes-Mitglied). Verhältnismässigkeit kritischer Punkt — [REVIEW: Alex DPO — TOLA-Bewertung als erhöht einstufen? Score B ggf. 3]',
+     'Das OAIC ist unabhängig und aktiv (NDB-Scheme, 3-Tage-Meldefrist); Privacy Act Reform stärkt OAIC-Ressourcen. Aufsicht über Sicherheitsbehörden begrenzt.',
+     'APP 12/13: Zugang und Berichtigung; OAIC-Beschwerdeverfahren. Strafschadenersatz noch begrenzt (Reform geplant). Rechtsbehelfe gegen Staatszugriff begrenzt wirksam.'
+   ],
+   context:{
+     adequacyNote:'Kein EU-Angemessenheitsbeschluss',
+     mechanism:'EU SCCs + vertragliche APP-8-Verpflichtung',
+     currentDevelopments:'📋 Privacy Act Reform laufend (Review-Ergebnis 2024/2025) — neue Direktmarketing-Regeln, erweitertes Löschrecht, stärkere OAIC-Befugnisse',
+     supplementaryMeasures:'Ende-zu-Ende-Verschlüsselung (schützt auch vor TOLA-Zugriff) ZWINGEND empfohlen, Datensparsamkeit, keine sensiblen EU-Daten in AU-Infrastruktur falls vermeidbar'
+   },
+   tia:'EU SCCs + APP-8-Verpflichtung + TIA mit expliziter TOLA-Act-Bewertung. Risikostufe mittel — insbesondere für sensible Daten.'},
+
+  {code:'IN',flag:'🇮🇳',name:'Indien',law:'DPDPA 2023',score:0.45,riskKey:'med',adequacy:false,
+   update:'📋 DPDPA-Ausführungsregeln (Digital Personal Data Protection Rules) [REVIEW: Alex DPO — Status Mai 2026: erlassen? DPBI operativ?] — Monitoring empfohlen.',
+   summary:'DPDPA 2023 schafft modernen Rahmen, DPBI wird zunehmend operativ. Risikofaktoren: breite nationale Sicherheitsausnahmen (Schedule 2), DPBI-Unabhängigkeit noch nicht voll gesichert, Ausführungsrecht teils ausstehend. TIA erforderlich.',
+   eeg:[3,2,2,2],
+   eegText:[
+     'Staatszugriff beruht auf dem IT Act und Sicherheitsgesetzgebung, aber Schedule 2 DPDPA enthält breite Ausnahmen für nationale Sicherheit und öffentliche Ordnung ohne ausreichend präzise Garantien — deutlich hinter EU-Standard.',
+     'Behördenzugriff unter dem IT Act möglich; National Security Act. Verhältnismässigkeitsgarantien begrenzt; Schedule-2-Ausnahmen weit gefasst.',
+     'Das DPBI (Data Protection Board of India) ist im Aufbau, formell unabhängig — aber Ernennung durch die Regierung, Unabhängigkeit nicht vollständig gesichert.',
+     'DPDPA: Beschwerderecht beim DPBI, Rechtsweg vor indischen Gerichten. DPBI noch nicht voll operativ, Umsetzungserfahrung begrenzt.'
+   ],
+   context:{
+     adequacyNote:'Kein EU-Angemessenheitsbeschluss',
+     mechanism:'EU SCCs (Modul 2) + DPDPA-konforme Einwilligungshinweise (lokale Sprache empfohlen)',
+     currentDevelopments:'📋 DPDPA-Ausführungsregeln [REVIEW: Alex DPO — Status Mai 2026: erlassen? DPBI operativ?] — Monitoring empfohlen',
+     supplementaryMeasures:'Pseudonymisierung sensibler Daten, Zugangsbeschränkungen, Verschlüsselung'
+   },
+   tia:'EU SCCs + DPDPA-Einwilligungshinweise + TIA mit expliziter Schedule-2-Bewertung. Risikostufe mittel. Ausführungsrecht aktiv überwachen.'},
+
+  {code:'HK',flag:'🇭🇰',name:'Hongkong',law:'PDPO (Cap. 486)',score:0.50,riskKey:'med',adequacy:false,
+   update:'⚠️ National Security Law (2020) + Article 23 Security Law (2024) — erhöhte Bedenken Behördenzugriff/Justizunabhängigkeit. Lage aktiv überwachen.',
+   summary:'Etablierte Datenschutzpraxis (PDPO seit 1996), PCPD aktiv. Seit National Security Law (2020) und Article 23 Security Law (2024) erhöhte Risiken für Behördenzugriff und Justizunabhängigkeit. Für sensible Daten erhöhte Sorgfalt. TIA erforderlich. [REVIEW: Alex DPO — Score 0.50 ist Grenze zu „Hoch" — bewusste Einstufung prüfen, ggf. eeg C auf 4 → Score 0.55]',
+   eeg:[3,2,3,2],
+   eegText:[
+     'Staatszugriff beruht formal auf gesetzlicher Grundlage (NSL 2020, Article 23 Law 2024), die Regeln sind jedoch weit gefasst und schaffen erhebliche Unsicherheit über Umfang und Anwendung.',
+     'NSL 2020 und Article 23 Law 2024: weitreichende Befugnisse inkl. Datenzugriff. NSL ermöglicht faktisch China-Auslieferung. Verhältnismässigkeit erheblich eingeschränkt — Tendenz steigend.',
+     'Das PCPD ist formell unabhängig und aktiv (130+ Untersuchungen 2024–2025), aber das politische Umfeld verändert sich; Unabhängigkeit der Justiz seit NSL gesunken.',
+     'PDPO: Beschwerderecht beim PCPD, gerichtlicher Rechtsweg. Vertrauen in Justizunabhängigkeit gesunken; Wirksamkeit von Rechtsmitteln gegen Staatszugriff fraglich.'
+   ],
+   context:{
+     adequacyNote:'Kein EU-Angemessenheitsbeschluss',
+     mechanism:'PCPD Model Data Processing Clauses (2023) oder EU SCCs',
+     currentDevelopments:'⚠️ National Security Law (2020) + Article 23 Security Law (2024) — erhöhte Bedenken Behördenzugriff/Justizunabhängigkeit. Lage aktiv überwachen',
+     supplementaryMeasures:'Verschlüsselung ERFORDERLICH für sensible Daten, Datenlokalisierung prüfen, Datensparsamkeit'
+   },
+   tia:'PCPD Model Clauses oder EU SCCs + explizites TIA mit NSL-/Article-23-Bewertung. Risikostufe mittel (steigende Tendenz). Ergänzende Massnahmen für sensible Daten zwingend.'},
+
+  {code:'US',flag:'🇺🇸',name:'USA',law:'Kein Bundesgesetz · FISA 702 · CLOUD Act · CCPA (CA)',score:0.55,riskKey:'high',adequacy:false,
+   update:'🔴 FISA 702 — RISAA-Sunset Ende April 2026 abgelaufen, läuft nur per 45-Tage-Übergangsverlängerung, Reform-Ausgang bis ca. Mitte Juni 2026 offen. DPF: Latombe-Klage abgewiesen, ~2.800+ aktive Zertifizierungen Anfang 2026.',
+   summary:'Für DPF-zertifizierte US-Empfänger gilt ein EU-Angemessenheitsbeschluss (Prüfung auf dataprivacyframework.gov) — das DPF hat die erste Gerichtsklage (Latombe) vor dem EuG im September 2025 überstanden. Für nicht-zertifizierte Empfänger: EU SCCs + vollständiges TIA zwingend. Hauptrisikofaktoren: FISA 702 und CLOUD Act. Kein umfassendes Datenschutz-Bundesgesetz.',
+   eeg:[2,3,3,3],
+   eegText:[
+     'FISA 702 und der CLOUD Act sind gesetzlich verankert und öffentlich zugänglich; Executive Order 14086 ergänzt Garantien. Die Regeln sind jedoch weniger präzise begrenzt als der EU-Standard verlangt, und EO 14086 ist als Exekutivakt jederzeit änderbar.',
+     'FISA 702 erlaubt Massenzugriff auf internationale Kommunikation ohne individuellen Richtervorbehalt. Aktuelle Lage Mai 2026: Die RISAA-Verlängerung von 2024 ist Ende April 2026 ausgelaufen; das Programm läuft seither nur per kurzfristiger Übergangsverlängerung, eine dauerhafte Reform/Reauthorisierung ist offen. CLOUD Act: Zugriffsanordnungen unabhängig vom Serverstandort. Verhältnismässigkeit nach EU-Massstab nicht gewährleistet.',
+     'Keine zentrale Datenschutzbehörde; FTC als de-facto-Aufsicht. FISA Court (FISC) ist geheim und einseitig. [REVIEW: Alex DPO — aktuelle Arbeitsfähigkeit und Besetzung des PCLOB unter der gegenwärtigen US-Administration Mai 2026 prüfen — der EDPB-Review hatte die volle PCLOB-Funktion als wichtig für das DPF angemahnt]',
+     'Data Protection Review Court (DPRC) unter EO 14086: Beschwerderecht für EU-Bürger, aber Unabhängigkeit und Wirksamkeit umstritten; der EDPB hat mehr Transparenz angemahnt. [REVIEW: Alex DPO — aktuelle DPRC-Funktionsfähigkeit Mai 2026 prüfen]'
+   ],
+   context:{
+     adequacyNote:'Kein allgemeiner EU-Angemessenheitsbeschluss; DPF-Angemessenheit nur für DPF-zertifizierte Empfänger. DPF vom EuG am 3.9.2025 (Latombe) bestätigt; mögliche CJEU-Appellation / NOYB-Klage beobachten',
+     mechanism:'DPF (für zertifizierte Empfänger) oder EU SCCs + TIA',
+     currentDevelopments:'🔴 FISA 702 — RISAA-Sunset Ende April 2026 abgelaufen, läuft nur per 45-Tage-Übergangsverlängerung, Reform-Ausgang bis ca. Mitte Juni 2026 offen. DPF: Latombe-Klage abgewiesen, ~2.800+ aktive Zertifizierungen Anfang 2026',
+     supplementaryMeasures:'Ende-zu-Ende-Verschlüsselung mit Schlüsseln ausserhalb US-Hoheitsgebiet, DPA mit CLOUD-Act-Gegenmassnahmen, Datensparsamkeit. SCCs auch bei DPF-Empfängern als Backup empfohlen (DPF beruht auf Exekutivakt)'
+   },
+   tia:'SCHRITT 1: DPF-Zertifizierung des Empfängers auf dataprivacyframework.gov prüfen (Status „Active", HR-Daten ggf. ausdrücklich abgedeckt) → falls zertifiziert, kein TIA nötig, Angemessenheit in der RoPA dokumentieren. SCHRITT 2: falls nicht zertifiziert — EU SCCs + vollständiges TIA, das FISA 702 (inkl. Reauthorisierungs-Unsicherheit), CLOUD Act und das fehlende Bundesgesetz adressiert. SCHRITT 3: ergänzende Massnahmen wie oben. Risikostufe hoch je nach Verarbeitungsart und DPF-Status.'},
+
+  {code:'VN',flag:'🇻🇳',name:'Vietnam',law:'PDPD (Decree 13/2023/ND-CP)',score:0.70,riskKey:'high',adequacy:false,
+   update:'📋 PDPD-Ausführungsbestimmungen (2024/2025) [REVIEW: Alex DPO — Status Mai 2026, MPS-Fristen/Formulare] — Umsetzungserfahrung begrenzt.',
+   summary:'PDPD 2023 ist ein moderner Rahmen, aber das Cybersecurity Law (2019) schreibt Datenlokalisierung vor und ermöglicht weitreichenden Staatszugriff. Vor jedem grenzüberschreitenden Transfer ist ein MPS-Dossier einzureichen. TIA erforderlich, mehrschrittig.',
+   eeg:[4,3,4,3],
+   eegText:[
+     'Staatszugriff beruht auf dem Cybersecurity Law 2019 und PDPD Art. 25, die Regeln sind jedoch weit gefasst und in einen autoritären Kontext eingebettet; Präzision und Begrenzung weit hinter EU-Standard.',
+     'Cybersecurity Law und PDPD: weitreichende staatliche Zugriffsrechte, das MPS kann Datenzugriff verlangen, Datenlokalisierung verpflichtend. Verhältnismässigkeitsgarantien faktisch nicht gegeben.',
+     'Das MPS (Ministerium für öffentliche Sicherheit) ist die zuständige Behörde — nicht unabhängig, Teil des Sicherheitsapparats. Kein unabhängiger Datenschutzbeauftragter.',
+     'PDPD: Betroffenenrechte formal vorhanden, aber effektive Durchsetzung gegen Staatszugriff nicht möglich; Gerichtsweg politisch eingeschränkt.'
+   ],
+   context:{
+     adequacyNote:'Kein EU-Angemessenheitsbeschluss',
+     mechanism:'Einwilligung + MPS-Dossier (60-Tage-Review) + Datenlokalisierung + EU SCCs',
+     currentDevelopments:'📋 PDPD-Ausführungsbestimmungen (2024/2025) [REVIEW: Alex DPO — Status Mai 2026, MPS-Fristen/Formulare] — Umsetzungserfahrung begrenzt',
+     supplementaryMeasures:'Ende-zu-Ende-Verschlüsselung ZWINGEND, Datensparsamkeit (keine sensiblen Daten falls vermeidbar), klare Vertragspflichten des Importeurs'
+   },
+   tia:'Mehrschrittig: (1) Einwilligung einholen, (2) MPS-Dossier einreichen, (3) domestische Kopie vietnamesischer Bürgerdaten, (4) EU SCCs, (5) vollständiges TIA mit Staatszugriffsbewertung. Risikostufe hoch. Lokale Rechtsberatung in Vietnam empfohlen.'},
+
+  {code:'CN',flag:'🇨🇳',name:'China (VR)',law:'PIPL 2021 · DSL 2021 · CSL 2017 (rev. 2026)',score:0.90,riskKey:'crit',adequacy:false,
+   update:'🔴 Revidiertes CSL in Kraft seit 1.1.2026 — Bussen bis RMB 10 Mio. (~CHF 1,4 Mio.), persönliche Haftung Verantwortlicher, extraterritoriale Wirkung ausgedehnt. PIP-Zertifizierung als dritter Transfermechanismus seit 1.1.2026. Neue Norm GB/T 46068-2025.',
+   summary:'Höchstrisiko-Land für grenzüberschreitende Datentransfers. PIPL, DSL und das revidierte CSL (in Kraft 1.1.2026) bilden ein dichtes Regelwerk mit weitreichenden Staatszugriffsrechten, Datenlokalisierungspflichten und erhöhten Bussgeldern. Drei Transfermechanismen seit 1.1.2026. Einzelfallprüfung zwingend.',
+   eeg:[4,5,5,4],
+   eegText:[
+     'Staatszugriff beruht formal auf umfangreicher Gesetzgebung (NSL, CSL, DSL, PIPL), die Regeln sind jedoch in einen Parteistaat ohne effektive Gewaltenteilung eingebettet; faktische Zugriffsbreite nicht durch präzise, begrenzende Regeln eingehegt.',
+     'Weitreichende staatliche Zugriffsrechte; Nachrichtendienste mit faktisch unbegrenzten Zugriffsmöglichkeiten; kein effektiver Richtervorbehalt gegen Staatszugriff. Die CSL-Revision 2026 dehnt extraterritoriale Befugnisse aus. Verhältnismässigkeit nach EU-Massstab nicht gegeben.',
+     'Die CAC (Cyberspace Administration of China) ist Teil des Staatsapparates, nicht unabhängig. Kein unabhängiger Aufsichtsmechanismus über die Überwachung.',
+     'PIPL sieht Betroffenenrechte formal vor (Art. 44–50), aber wirksame Rechtsmittel gegen Staatszugriff sind faktisch nicht vorhanden; ausländische Kläger haben eingeschränkten Gerichtsweg.'
+   ],
+   context:{
+     adequacyNote:'Kein EU- und kein CH-Angemessenheitsbeschluss. EU SCCs + maximale Schutzmassnahmen zwingend',
+     mechanism:'CAC Standard Contractual Clauses + Filing, ODER CAC Security Assessment, ODER PIP-Zertifizierung (neuer dritter Mechanismus seit 1.1.2026)',
+     currentDevelopments:'🔴 Revidiertes CSL in Kraft seit 1.1.2026 — Bussen bis RMB 10 Mio. (~CHF 1,4 Mio.), persönliche Haftung Verantwortlicher, extraterritoriale Wirkung ausgedehnt. PIP-Zertifizierung als dritter Transfermechanismus seit 1.1.2026. Neue Norm GB/T 46068-2025',
+     supplementaryMeasures:'Datenlokalisierung chinesischer Bürgerdaten, Ende-zu-Ende-Verschlüsselung, Datensparsamkeit, keine sensiblen Daten falls vermeidbar'
+   },
+   tia:'Einzelfallprüfung zwingend. Mechanismus wählen: (1) CAC SCC + Filing (für kleinere Volumen), (2) CAC Security Assessment (für CII-Betreiber / grosse Volumen), (3) PIP-Zertifizierung (für gruppeninterne Transfers). Ergänzende Massnahmen wie oben. Bussen seit 1.1.2026 bis CHF 1,4 Mio. (Unternehmen) bzw. CHF 140\'000 (Verantwortliche persönlich). Lokale chinesische Rechtsberatung unerlässlich. Risikostufe kritisch.'}
 ];
 
 function riskTag(key){
@@ -461,16 +766,84 @@ function scoreColor(s){
   return "#b71c1c";
 }
 
+// K12b helper: HTML-escape
+function escHTML(s){
+  if(s==null) return '';
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+// K12b helper: wrap [REVIEW: Alex DPO ...]-Marker als gelbe Inline-Markierung
+function markReview(s){
+  if(s==null) return '';
+  const esc = escHTML(s);
+  return esc.replace(/\[REVIEW:[^\]]*\]/g, m => `<mark class="review-marker">${m}</mark>`);
+}
+// K12b helper: Severity-Klasse aus Update-Banner-Icon ableiten
+function updateBannerClass(u){
+  if(!u) return 'neutral';
+  if(u.indexOf('🔴')===0) return 'crit';
+  if(u.indexOf('⚠️')===0) return 'warn';
+  if(u.indexOf('📋')===0) return 'info';
+  if(u.indexOf('✅')===0) return 'ok';
+  return 'neutral';
+}
+// K12b: Copy Score + Risikostufe + Kurzzusammenfassung in Zwischenablage (fürs TIA-Dokument)
+function copyTextForTIA(i){
+  const c = COUNTRIES[i];
+  if(!c) return;
+  const txt =
+    `Länderbewertung ${c.name} (Mai 2026)\n` +
+    `Länderrisikoscore: ${c.score.toFixed(2)} (${rLabel(c.riskKey)})\n` +
+    `EU-Angemessenheitsbeschluss: ${c.adequacy ? 'Ja' : 'Nein'}\n` +
+    `Rechtsgrundlage: ${c.law}\n\n` +
+    `Kurzzusammenfassung:\n${c.summary}\n\n` +
+    `Methodik: 4 European Essential Guarantees (EDPB Recommendations 02/2020). ` +
+    `EEG-Werte [A,B,C,D]: [${c.eeg.join(',')}] — Summe ${c.eeg.reduce((a,b)=>a+b,0)}/20 ÷ 20 = ${c.score.toFixed(2)}.\n` +
+    `Quelle: Zehnder Governance Country Intelligence Portal.`;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const btn = document.querySelector(`button.copy-tia-btn[data-copy-idx="${i}"]`);
+    if(btn){
+      const orig = btn.textContent;
+      btn.textContent = '✓ In Zwischenablage kopiert';
+      btn.classList.add('copied');
+      setTimeout(()=>{ btn.textContent = orig; btn.classList.remove('copied'); }, 2200);
+    }
+  }).catch(()=>{ alert('Kopieren fehlgeschlagen — bitte manuell markieren.'); });
+}
+function rLabel(k){return ({low:'Niedrig',med:'Mittel',high:'Hoch',crit:'Sehr hoch'})[k]||k;}
+
 function renderTable(){
   const tbody=document.getElementById("countryBody");
   COUNTRIES.forEach((c,i)=>{
     const color=scoreColor(c.score);
     const pct=Math.round(c.score*100);
+    const eegSum=c.eeg.reduce((a,b)=>a+b,0);
+    const tiaNeedText = c.adequacy ? 'Nein (Angemessenheit)' : 'Ja';
+
+    const eegCardsHtml = c.eeg.map((s, idx) => {
+      const segments = [0,1,2,3,4].map(n =>
+        `<span class="eeg-segment ${n < s ? 'filled' : ''} sev${s}"></span>`
+      ).join('');
+      return `
+        <div class="eeg-card">
+          <div class="eeg-card-head">
+            <span class="eeg-letter">${'ABCD'[idx]}</span>
+            <span class="eeg-label">${escHTML(EEG_LABELS[idx])}</span>
+            <div class="eeg-bar-segments" aria-label="Score ${s} von 5">${segments}</div>
+            <span class="eeg-score">${s}/5</span>
+          </div>
+          <div class="eeg-text">${markReview(c.eegText[idx])}</div>
+        </div>`;
+    }).join('');
+
+    const updateBlock = c.update
+      ? `<div class="dp-update ${updateBannerClass(c.update)}">${markReview(c.update)}</div>`
+      : '';
+
     tbody.innerHTML+=`
     <tr>
       <td>
-        <div><span class="flag">${c.flag}</span><span class="cname">${c.name}</span></div>
-        <div class="claw">${c.law}</div>
+        <div><span class="flag">${c.flag}</span><span class="cname">${escHTML(c.name)}</span></div>
+        <div class="claw">${escHTML(c.law)}</div>
       </td>
       <td>
         <div class="score-bar-wrap">
@@ -480,15 +853,74 @@ function renderTable(){
       </td>
       <td>${riskTag(c.riskKey)}</td>
       <td>${c.adequacy?'<span class="adequacy-yes">✓ Ja</span>':'<span class="adequacy-no">Nein</span>'}</td>
-      <td><span style="font-size:12px;color:${c.adequacy?'#81c784':'rgba(255,255,255,.6)'}">${c.tiaNeed}</span></td>
+      <td><span style="font-size:12px;color:${c.adequacy?'#81c784':'rgba(255,255,255,.6)'}">${tiaNeedText}</span></td>
       <td>
         <button class="detail-btn" data-detail-idx="${i}">Details ▾</button>
         <div class="detail-panel" id="detail-${i}">
-          ${c.edpb.map(e=>`<div class="edpb-row"><span class="edpb-k">${e.k}</span><span class="edpb-v ${e.c}">${e.v}</span></div>`).join('')}
-          <div style="margin-top:8px;font-size:11px;color:rgba(255,255,255,.4);font-style:italic;">${c.note}</div>
+          <div class="dp-inner">
+            <div class="dp-head">
+              <div class="dp-head-left">
+                <div class="dp-name"><span class="flag">${c.flag}</span>${escHTML(c.name)}</div>
+                <div class="dp-law">${escHTML(c.law)}</div>
+              </div>
+              <div class="dp-head-right">
+                <div class="dp-score-big" style="color:${color}">${c.score.toFixed(2)}</div>
+                ${riskTag(c.riskKey)}
+              </div>
+            </div>
+
+            ${updateBlock}
+
+            <div class="dp-summary">
+              <div class="dp-summary-label">Kurzzusammenfassung — fürs TIA-Dokument</div>
+              <div class="dp-summary-text">${markReview(c.summary)}</div>
+            </div>
+
+            <div class="dp-section-divider"><span class="dp-section-label">EDPB Rec. 02/2020 · ergibt den Score</span></div>
+            <div class="eeg-cards">${eegCardsHtml}</div>
+            <div class="dp-sum-line">Summe der 4 EEG: <strong>${eegSum}/20</strong> &nbsp;÷&nbsp;20&nbsp;=&nbsp;Score <strong>${c.score.toFixed(2)}</strong></div>
+
+            <div class="dp-section-divider"><span class="dp-section-label">Einordnung · kein Score-Bestandteil</span></div>
+            <div class="context-grid">
+              <div class="context-tile">
+                <div class="context-label">EU-Angemessenheitsbeschluss</div>
+                <div class="context-value">${markReview(c.context.adequacyNote)}</div>
+              </div>
+              <div class="context-tile">
+                <div class="context-label">Transfermechanismus</div>
+                <div class="context-value">${markReview(c.context.mechanism)}</div>
+              </div>
+              <div class="context-tile">
+                <div class="context-label">Aktuelle Entwicklungen</div>
+                <div class="context-value">${markReview(c.context.currentDevelopments)}</div>
+              </div>
+              <div class="context-tile">
+                <div class="context-label">Ergänzende Massnahmen</div>
+                <div class="context-value">${markReview(c.context.supplementaryMeasures)}</div>
+              </div>
+            </div>
+
+            <div class="dp-tia">
+              <div class="dp-tia-label">TIA-Empfehlung</div>
+              <div class="dp-tia-text">${markReview(c.tia)}</div>
+            </div>
+
+            <div class="dp-actions">
+              <button class="copy-tia-btn" data-copy-idx="${i}" data-action="copy-tia">📋 Text fürs TIA kopieren</button>
+              <a href="#docs" class="template-link">→ Zur Template-Bibliothek</a>
+            </div>
+          </div>
         </div>
       </td>
     </tr>`;
+  });
+
+  // K12b: Click-Handler für Copy-TIA-Buttons (event-delegation auf tbody)
+  document.getElementById("countryBody").addEventListener("click", (e) => {
+    const btn = e.target.closest('button[data-action="copy-tia"]');
+    if(!btn) return;
+    const idx = +btn.dataset.copyIdx;
+    copyTextForTIA(idx);
   });
 }
 
