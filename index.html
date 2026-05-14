@@ -593,7 +593,7 @@ const COUNTRIES = [
    },
    tia:'[REVIEW: Alex DPO] Kein TIA für EU→CA im Anwendungsbereich des Angemessenheitsbeschlusses; ausserhalb EU SCCs + TIA.'},
 
-  {code:'RS',flag:'🇷🇸',name:'Serbien',law:'ZZPL',score:0.30,riskKey:'med',adequacy:true,
+  {code:'RS',flag:'🇷🇸',name:'Serbien',law:'ZZPL',score:0.30,riskKey:'mid',adequacy:true,
    summary:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss vorhanden. ZZPL (Datenschutzgesetz) DSGVO-äquivalent ausgestaltet. Als jüngere Adäquanz weniger erprobt — Score etwas höher als etablierte Adäquanz-Länder.',
    eeg:[1,2,1,2],
    eegText:[
@@ -610,7 +610,7 @@ const COUNTRIES = [
    },
    tia:'[REVIEW: Alex DPO] Kein TIA für EU→RS im Anwendungsbereich des Angemessenheitsbeschlusses.'},
 
-  {code:'SG',flag:'🇸🇬',name:'Singapur',law:'PDPA 2012 (Amendment 2020)',score:0.35,riskKey:'med',adequacy:false,
+  {code:'SG',flag:'🇸🇬',name:'Singapur',law:'PDPA 2012 (Amendment 2020)',score:0.35,riskKey:'mid',adequacy:false,
    summary:'Robustes Datenschutzrecht (PDPA, 2020 reformiert), PDPC unabhängig und aktiv. Kein EU-Angemessenheitsbeschluss, aber sehr gut für internationale Transfers geeignet — häufig bevorzugter APAC-Hub. TIA erforderlich.',
    eeg:[1,2,2,2],
    eegText:[
@@ -627,7 +627,7 @@ const COUNTRIES = [
    },
    tia:'PDPC Model Clauses oder EU SCCs + DPA + kurzes TIA. Risikostufe niedrig–mittel.'},
 
-  {code:'BR',flag:'🇧🇷',name:'Brasilien',law:'LGPD (Lei 13.709/2018)',score:0.40,riskKey:'med',adequacy:false,
+  {code:'BR',flag:'🇧🇷',name:'Brasilien',law:'LGPD (Lei 13.709/2018)',score:0.40,riskKey:'mid',adequacy:false,
    summary:'Kein EU-Angemessenheitsbeschluss, aber LGPD weitgehend DSGVO-konform. ANPD operativ und zunehmend aktiv. Demokratischer Rechtsstaat, keine Massenüberwachung vergleichbar China. TIA erforderlich.',
    eeg:[2,2,2,2],
    eegText:[
@@ -644,7 +644,7 @@ const COUNTRIES = [
    },
    tia:'EU SCCs + DPA + kurzes TIA. Risikostufe niedrig–mittel. Ergänzende Massnahmen: Verschlüsselung.'},
 
-  {code:'AU',flag:'🇦🇺',name:'Australien',law:'Privacy Act 1988 (APPs)',score:0.40,riskKey:'med',adequacy:false,
+  {code:'AU',flag:'🇦🇺',name:'Australien',law:'Privacy Act 1988 (APPs)',score:0.40,riskKey:'mid',adequacy:false,
    update:'📋 Privacy Act Reform laufend (Review-Ergebnis 2024/2025) — neue Direktmarketing-Regeln, erweitertes Löschrecht, stärkere OAIC-Befugnisse.',
    summary:'Solide Datenschutzgesetze (APPs), kein EU-Angemessenheitsbeschluss. Risikofaktor: TOLA Act 2018 und Data-Retention-Gesetzgebung erlauben weitreichenden Behördenzugriff. Privacy Act Reform laufend. TIA erforderlich.',
    eeg:[2,2,2,2],
@@ -662,7 +662,7 @@ const COUNTRIES = [
    },
    tia:'EU SCCs + APP-8-Verpflichtung + TIA mit expliziter TOLA-Act-Bewertung. Risikostufe mittel — insbesondere für sensible Daten.'},
 
-  {code:'IN',flag:'🇮🇳',name:'Indien',law:'DPDPA 2023',score:0.45,riskKey:'med',adequacy:false,
+  {code:'IN',flag:'🇮🇳',name:'Indien',law:'DPDPA 2023',score:0.45,riskKey:'mid',adequacy:false,
    update:'📋 DPDPA-Ausführungsregeln (Digital Personal Data Protection Rules) [REVIEW: Alex DPO — Status Mai 2026: erlassen? DPBI operativ?] — Monitoring empfohlen.',
    summary:'DPDPA 2023 schafft modernen Rahmen, DPBI wird zunehmend operativ. Risikofaktoren: breite nationale Sicherheitsausnahmen (Schedule 2), DPBI-Unabhängigkeit noch nicht voll gesichert, Ausführungsrecht teils ausstehend. TIA erforderlich.',
    eeg:[3,2,2,2],
@@ -680,7 +680,7 @@ const COUNTRIES = [
    },
    tia:'EU SCCs + DPDPA-Einwilligungshinweise + TIA mit expliziter Schedule-2-Bewertung. Risikostufe mittel. Ausführungsrecht aktiv überwachen.'},
 
-  {code:'HK',flag:'🇭🇰',name:'Hongkong',law:'PDPO (Cap. 486)',score:0.50,riskKey:'med',adequacy:false,
+  {code:'HK',flag:'🇭🇰',name:'Hongkong',law:'PDPO (Cap. 486)',score:0.50,riskKey:'mid',adequacy:false,
    update:'⚠️ National Security Law (2020) + Article 23 Security Law (2024) — erhöhte Bedenken Behördenzugriff/Justizunabhängigkeit. Lage aktiv überwachen.',
    summary:'Etablierte Datenschutzpraxis (PDPO seit 1996), PCPD aktiv. Seit National Security Law (2020) und Article 23 Security Law (2024) erhöhte Risiken für Behördenzugriff und Justizunabhängigkeit. Für sensible Daten erhöhte Sorgfalt. TIA erforderlich. [REVIEW: Alex DPO — Score 0.50 ist Grenze zu „Hoch" — bewusste Einstufung prüfen, ggf. eeg C auf 4 → Score 0.55]',
    eeg:[3,2,3,2],
@@ -755,7 +755,7 @@ const COUNTRIES = [
 
 function riskTag(key){
   const map={low:["r-ok","GERING"],mid:["r-mid","MITTEL"],high:["r-high","ERHÖHT"],crit:["r-crit","KRITISCH"]};
-  const [cls,label]=map[key];
+  const [cls,label]=map[key]||["r-mid","?"];
   return `<span class="risk-tag ${cls}">${label}</span>`;
 }
 
@@ -809,7 +809,7 @@ function copyTextForTIA(i){
     }
   }).catch(()=>{ alert('Kopieren fehlgeschlagen — bitte manuell markieren.'); });
 }
-function rLabel(k){return ({low:'Niedrig',med:'Mittel',high:'Hoch',crit:'Sehr hoch'})[k]||k;}
+function rLabel(k){return ({low:'Niedrig',mid:'Mittel',high:'Hoch',crit:'Sehr hoch'})[k]||k;}
 
 function renderTable(){
   const tbody=document.getElementById("countryBody");
