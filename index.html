@@ -578,22 +578,23 @@ const COUNTRIES = [
    },
    tia:'Kein TIA für EU→KR. Für KR→Drittland: Art. 28(8) PIPA-Benachrichtigung.'},
 
-  {code:'CA',flag:'🇨🇦',name:'Kanada',law:'PIPEDA · Quebec Law 25',score:0.20,riskKey:'low',adequacy:true,
-   summary:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss vorhanden (gilt für PIPEDA-unterliegende kommerzielle Verarbeitungen). PIPEDA bundesweit, Quebec mit Law 25 (verschärft). Kein TIA für EU→CA im Anwendungsbereich des Beschlusses.',
-   eeg:[1,1,1,1],
+  {code:'CA',flag:'🇨🇦',name:'Kanada',law:'PIPEDA · Quebec Law 25',score:0.25,riskKey:'low',adequacy:true,
+   update:'⚠️ Adäquanz gilt NUR für kommerzielle Organisationen unter PIPEDA. NICHT abgedeckt: öffentliche Stellen, Bundesbehörden, Quebec-spezifische Sachverhalte (Law 25 hat eigenes Regime).',
+   summary:'EU-Angemessenheitsbeschluss vorhanden, aber Reichweite begrenzt: NUR für kommerzielle PIPEDA-Verarbeitungen. Öffentliche Stellen, Bundesbehörden und Quebec (Law 25) sind NICHT abgedeckt. Für PIPEDA-Bereich: KEIN TIA nötig. Ausserhalb: TIA + EU SCCs erforderlich.',
+   eeg:[1,1,2,1],
    eegText:[
      'Staatszugriff beruht auf gesetzlicher Grundlage; CSIS Act, Anti-Terrorism-Gesetzgebung. Klar geregelt mit richterlicher Kontrolle. [REVIEW: Alex DPO]',
      'Five-Eyes-Mitglied; Überwachungsbefugnisse vorhanden, jedoch mit verfassungsrechtlichen Schranken (Charter of Rights). [REVIEW: Alex DPO — Verhältnismässigkeits-Einschätzung prüfen]',
-     'Office of the Privacy Commissioner of Canada (OPC) unabhängig; Quebec mit eigener Behörde (CAI). [REVIEW: Alex DPO]',
+     'Office of the Privacy Commissioner of Canada (OPC) unabhängig; Quebec mit eigener Behörde (CAI). OPC-Reichweite gilt nur für PIPEDA, nicht für Bundesbehörden mit eigenen Datenschutzregimes.',
      'Klagerechte nach PIPEDA und Quebec Law 25; OPC-Beschwerdeverfahren. [REVIEW: Alex DPO — Wirksamkeit der Rechtsbehelfe gegen Staatszugriff prüfen]'
    ],
    context:{
-     adequacyNote:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss für PIPEDA-Bereich — Reichweite genau prüfen',
-     mechanism:'Kein TIA für EU→CA im Beschluss-Anwendungsbereich; ausserhalb: EU SCCs',
+     adequacyNote:'EU-Angemessenheitsbeschluss NUR für kommerzielle PIPEDA-Verarbeitungen. NICHT abgedeckt: öffentliche Stellen, Bundesbehörden, Quebec-Law-25-Sachverhalte',
+     mechanism:'Für PIPEDA-kommerzielle Empfänger: kein zusätzlicher Mechanismus. Für nicht-PIPEDA / öffentliche / Quebec: EU SCCs + TIA',
      currentDevelopments:'[REVIEW: Alex DPO — Status Quebec Law 25 Umsetzung + etwaige PIPEDA-Reform Mai 2026]',
-     supplementaryMeasures:'[REVIEW: Alex DPO]'
+     supplementaryMeasures:'Bei jedem Transfer prüfen: ist der Empfänger PIPEDA-unterliegende kommerzielle Organisation? Falls nein: SCCs + Schutzmassnahmen'
    },
-   tia:'[REVIEW: Alex DPO] Kein TIA für EU→CA im Anwendungsbereich des Angemessenheitsbeschlusses; ausserhalb EU SCCs + TIA.'},
+   tia:'Kein TIA für EU→CA im PIPEDA-kommerziellen Bereich (Adäquanz). Ausserhalb (öffentliche Stellen, Bundesbehörden, Quebec Law 25): EU SCCs + vollständiges TIA erforderlich.'},
 
   {code:'RS',flag:'🇷🇸',name:'Serbien',law:'ZZPL',score:0.30,riskKey:'mid',adequacy:true,
    summary:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss vorhanden. ZZPL (Datenschutzgesetz) DSGVO-äquivalent ausgestaltet. Als jüngere Adäquanz weniger erprobt — Score etwas höher als etablierte Adäquanz-Länder.',
@@ -629,22 +630,23 @@ const COUNTRIES = [
    },
    tia:'PDPC Model Clauses oder EU SCCs + DPA + kurzes TIA. Risikostufe niedrig–mittel.'},
 
-  {code:'BR',flag:'🇧🇷',name:'Brasilien',law:'LGPD (Lei 13.709/2018)',score:0.40,riskKey:'mid',adequacy:false,
-   summary:'Kein EU-Angemessenheitsbeschluss, aber LGPD weitgehend DSGVO-konform. ANPD operativ und zunehmend aktiv. Demokratischer Rechtsstaat, keine Massenüberwachung vergleichbar China. TIA erforderlich.',
-   eeg:[2,2,2,2],
+  {code:'BR',flag:'🇧🇷',name:'Brasilien',law:'LGPD (Lei 13.709/2018)',score:0.20,riskKey:'low',adequacy:true,
+   update:'✅ NEU (Januar 2026): EU-Kommission hat Angemessenheitsbeschluss erlassen — Implementing Decision (EU) 2026/179 vom 26.01.2026. ANPD-Spiegelregelung Resolution Nr. 32/2026 vom 27.01.2026. Review-Zyklus 4 Jahre.',
+   summary:'EU-Angemessenheitsbeschluss seit 26.01.2026 (Implementing Decision 2026/179). LGPD vollumfänglich DSGVO-konform anerkannt, ANPD operativ und unabhängig. KEIN TIA mehr nötig für EU→BR Transfers.',
+   eeg:[1,1,1,1],
    eegText:[
-     'Staatszugriff (Geheimdienst ABIN) beruht auf gesetzlicher Grundlage mit verfassungsrechtlichen Grenzen. Marco Civil da Internet als Rahmen. Regeln vorhanden, aber weniger präzise als EU-Standard.',
-     'Überwachungsbefugnisse existieren, jedoch mit verfassungsrechtlichen Schranken; brasilianische Gerichte haben Massnahmen in der Vergangenheit aufgehoben. Verhältnismässigkeit mittlere Einstufung.',
-     'Die ANPD ist seit 2021 operativ, formell unabhängig vom Präsidialamt; Ressourcen noch im Aufbau, Durchsetzung zunehmend aktiv.',
-     'Art. 18–22 LGPD: Klagerecht und Betroffenenrechte vergleichbar DSGVO; Sammelklagen möglich; ANPD-Beschwerden; richterliche Kontrolle gesichert.'
+     'Staatszugriff beruht auf gesetzlicher Grundlage mit verfassungsrechtlichen Grenzen; Marco Civil da Internet als Rahmen. Im Adäquanz-Verfahren als ausreichend präzise und begrenzt anerkannt.',
+     'Überwachungsbefugnisse existieren, jedoch mit verfassungsrechtlichen Schranken; brasilianische Gerichte heben Massnahmen wirksam auf. Verhältnismässigkeit im Adäquanz-Verfahren bestätigt.',
+     'Die ANPD ist seit 2021 vollständig operativ, formell unabhängig vom Präsidialamt; Adäquanz-Beschluss bestätigt ausreichende Ressourcen und Durchsetzungspraxis.',
+     'Art. 18–22 LGPD: Klagerecht und Betroffenenrechte vergleichbar DSGVO; Sammelklagen möglich; ANPD-Beschwerden; richterliche Kontrolle gesichert. Wirksamkeit im Adäquanz-Verfahren anerkannt.'
    ],
    context:{
-     adequacyNote:'Kein EU-Angemessenheitsbeschluss',
-     mechanism:'EU SCCs Modul 2 (oder Modul 1 je nach Rolle) + DPA/AVV',
-     currentDevelopments:'[REVIEW: Alex DPO — ANPD-Resolutionen / Enforcement-Stand Mai 2026]',
-     supplementaryMeasures:'EU SCCs + DPA, Verschlüsselung in Übertragung und Speicherung'
+     adequacyNote:'EU-Angemessenheitsbeschluss seit 26.01.2026 (Implementing Decision 2026/179)',
+     mechanism:'Kein TIA für EU→BR. KEIN zusätzlicher Mechanismus erforderlich (Adäquanz)',
+     currentDevelopments:'✅ EU Implementing Decision 2026/179 vom 26.01.2026 in Kraft. ANPD Resolution Nr. 32/2026 (27.01.2026) Spiegelregelung. Review-Zyklus alle 4 Jahre',
+     supplementaryMeasures:'Keine erforderlich für EU→BR. Für BR→Drittland: lokale LGPD-Mechanismen prüfen'
    },
-   tia:'EU SCCs + DPA + kurzes TIA. Risikostufe niedrig–mittel. Ergänzende Massnahmen: Verschlüsselung.'},
+   tia:'Kein TIA für EU→BR Transfers (Adäquanz). Für BR→Drittland: LGPD-Transfermechanismen anwenden (EU SCCs de facto akzeptiert oder LGPD-eigene Klauseln in Entwicklung).'},
 
   {code:'AU',flag:'🇦🇺',name:'Australien',law:'Privacy Act 1988 (APPs)',score:0.40,riskKey:'mid',adequacy:false,
    update:'📋 Privacy Act Reform laufend (Review-Ergebnis 2024/2025) — neue Direktmarketing-Regeln, erweitertes Löschrecht, stärkere OAIC-Befugnisse.',
@@ -701,8 +703,8 @@ const COUNTRIES = [
    tia:'PCPD Model Clauses oder EU SCCs + explizites TIA mit NSL-/Article-23-Bewertung. Risikostufe mittel (steigende Tendenz). Ergänzende Massnahmen für sensible Daten zwingend.'},
 
   {code:'US',flag:'🇺🇸',name:'USA',law:'Kein Bundesgesetz · FISA 702 · CLOUD Act · CCPA (CA)',score:0.55,riskKey:'high',adequacy:false,
-   update:'🔴 FISA 702 — RISAA-Sunset Ende April 2026 abgelaufen, läuft nur per 45-Tage-Übergangsverlängerung, Reform-Ausgang bis ca. Mitte Juni 2026 offen. DPF: Latombe-Klage abgewiesen, ~2.800+ aktive Zertifizierungen Anfang 2026.',
-   summary:'Für DPF-zertifizierte US-Empfänger gilt ein EU-Angemessenheitsbeschluss (Prüfung auf dataprivacyframework.gov) — das DPF hat die erste Gerichtsklage (Latombe) vor dem EuG im September 2025 überstanden. Für nicht-zertifizierte Empfänger: EU SCCs + vollständiges TIA zwingend. Hauptrisikofaktoren: FISA 702 und CLOUD Act. Kein umfassendes Datenschutz-Bundesgesetz.',
+   update:'🔴 USA-Bewertung hängt vom DPF-Status des konkreten Empfängers ab — bei JEDEM Transfer prüfen: DPF-zertifiziert (~0.30, KEIN TIA) ODER non-DPF (0.55, TIA + EU SCCs zwingend). Aktueller Stand Mai 2026: FISA 702 RISAA-Sunset Ende April 2026 abgelaufen, nur 45-Tage-Übergangsverlängerung aktiv, Reform-Ausgang Mitte Juni 2026 offen. DPF: Latombe-Klage abgewiesen, ~2.800+ aktive Zertifizierungen Anfang 2026.',
+   summary:'Der angezeigte Score 0.55 ist der Worst-Case für non-DPF-Empfänger. WICHTIG: DPF-Status des konkreten Empfängers auf dataprivacyframework.gov prüfen. (1) DPF-zertifiziert: effektiver Score ~0.30, EU-Angemessenheitsbeschluss greift, KEIN TIA nötig. (2) Non-DPF-Empfänger: voller Score 0.55, EU SCCs + vollständiges TIA zwingend. DPF hat Latombe-Klage am EuG (3.9.2025) überstanden. Hauptrisikofaktoren bleiben FISA 702 und CLOUD Act. Kein umfassendes Datenschutz-Bundesgesetz.',
    eeg:[2,3,3,3],
    eegText:[
      'FISA 702 und der CLOUD Act sind gesetzlich verankert und öffentlich zugänglich; Executive Order 14086 ergänzt Garantien. Die Regeln sind jedoch weniger präzise begrenzt als der EU-Standard verlangt, und EO 14086 ist als Exekutivakt jederzeit änderbar.',
