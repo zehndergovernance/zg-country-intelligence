@@ -520,7 +520,7 @@ const COUNTRIES = [
    context:{
      adequacyNote:'EU-Angemessenheitsbeschluss (2000, im Lichte des nDSG bestätigt)',
      mechanism:'Kein zusätzlicher Mechanismus für EU↔CH erforderlich',
-     currentDevelopments:'nDSG stabil; [REVIEW: Alex DPO — EDÖB-Enforcement-Praxis 2025/2026 als Monitoring-Punkt, low-prio]',
+     currentDevelopments:'Unter dem seit 1. September 2023 geltenden revidierten Datenschutzgesetz (revDSG) hat der Eidgenössische Datenschutz- und Öffentlichkeitsbeauftragte (EDÖB) seine Enforcement-Aktivitäten 2025 und Anfang 2026 spürbar verschärft. Schwerpunkte: Verletzungen der Informationspflichten bei KI-Anwendungen, unzulässiges Profiling im Online-Handel, fehlende Auftragsverarbeitungsverträge. Strafverfahren durch kantonale Behörden, da revDSG primär verantwortliche natürliche Personen mit Bussen bis CHF 250\'000 trifft (Unternehmen subsidiär bis CHF 50\'000). Strafrechtliche Bussen sind nicht versicherbar.',
      supplementaryMeasures:'für CH→Drittland: EDÖB-Standardvertragsklauseln + Länderbewertung'
    },
    tia:'Kein TIA für EU→CH oder CH→EU. Für CH→Drittland: TIA nach Art. 16 nDSG.'},
@@ -555,7 +555,7 @@ const COUNTRIES = [
    context:{
      adequacyNote:'EU-Angemessenheitsbeschluss (2019)',
      mechanism:'Kein TIA für EU→JP',
-     currentDevelopments:'APPI 2022 stabil; [REVIEW: Alex DPO — PPC-Reformstand Mai 2026 kurz prüfen, voraussichtlich unverändert]',
+     currentDevelopments:'📋 APPI-Reform durch die Personal Information Protection Commission (PPC) seit November 2023 in Diskussion. "Views on Institutional Issues" im März 2025, "Policy on Institutional Amendments" im Januar 2026. Am 7. April 2026 hat das Kabinett den Änderungsentwurf gebilligt: schärfere Regeln für Minderjährigen-Daten, biometrische Daten und Opt-out-Sharing; erleichterte Bestimmungen für statistische Verarbeitung (inkl. KI). Erweiterte PPC-Befugnisse zu Inspektion, Korrekturanordnungen und administrativen Bussen. EU-Adäquanz weiterhin vollumfänglich in Kraft; Verhandlungen zur Ausweitung auf akademischen und öffentlichen Sektor laufen.',
      supplementaryMeasures:'keine für EU→JP'
    },
    tia:'Kein TIA für EU→JP. Für JP→Drittland: APPI Chapter IV.'},
@@ -583,35 +583,36 @@ const COUNTRIES = [
    summary:'EU-Angemessenheitsbeschluss vorhanden, aber Reichweite begrenzt: NUR für kommerzielle PIPEDA-Verarbeitungen. Öffentliche Stellen, Bundesbehörden und Quebec (Law 25) sind NICHT abgedeckt. Für PIPEDA-Bereich: KEIN TIA nötig. Ausserhalb: TIA + EU SCCs erforderlich.',
    eeg:[1,1,2,1],
    eegText:[
-     'Staatszugriff beruht auf gesetzlicher Grundlage; CSIS Act, Anti-Terrorism-Gesetzgebung. Klar geregelt mit richterlicher Kontrolle. [REVIEW: Alex DPO]',
-     'Five-Eyes-Mitglied; Überwachungsbefugnisse vorhanden, jedoch mit verfassungsrechtlichen Schranken (Charter of Rights). [REVIEW: Alex DPO — Verhältnismässigkeits-Einschätzung prüfen]',
+     'Kanadische Behörden (insb. CSIS und RCMP) besitzen im Rahmen der nationalen Sicherheit und Strafverfolgung weitreichende Datenzugriffsbefugnisse, primär verankert im CSIS Act und im Criminal Code. Bill C-26 (Critical Cyber Systems Protection Act – CCSPA) starb mit der Prorogation im Januar 2025; Nachfolger Bill C-8 wurde am 18. Juni 2025 von der Carney-Regierung wiedereingebracht und befindet sich im Mai 2026 weiterhin im legislativen Prozess (Ausschussprüfung). Eine flächendeckende, anlasslose Massenüberwachung von Ausländern im Ausland vergleichbar mit US-FISA Sec. 702 existiert in Kanada rechtlich nicht.',
+     'Eingriffe in die Privatsphäre erfordern in Kanada stringent eine vorherige richterliche Anordnung (Warrants), gestützt auf Section 8 der Canadian Charter of Rights and Freedoms. Der Supreme Court of Canada hat im wegweisenden Urteil R. v. Spencer (2014) die Erwartung auf Online-Privatsphäre substanziell gestärkt, indem er den anlasslosen staatlichen Zugriff auf IP-Identifikationsdaten ohne Richtervorbehalt für verfassungswidrig erklärte.',
      'Office of the Privacy Commissioner of Canada (OPC) unabhängig; Quebec mit eigener Behörde (CAI). OPC-Reichweite gilt nur für PIPEDA, nicht für Bundesbehörden mit eigenen Datenschutzregimes.',
-     'Klagerechte nach PIPEDA und Quebec Law 25; OPC-Beschwerdeverfahren. [REVIEW: Alex DPO — Wirksamkeit der Rechtsbehelfe gegen Staatszugriff prüfen]'
+     'Betroffene Personen können Beschwerden beim Office of the Privacy Commissioner (OPC) einlegen, dessen Durchsetzungsbefugnisse traditionell auf Empfehlungen beschränkt sind. Ein Klagerecht vor dem Federal Court (PIPEDA Sec. 14) steht – im Gegensatz zu den USA ausserhalb des DPF – explizit auch Nicht-Kanadiern offen. Der EU-Adäquanzbeschluss für Kanada gilt allerdings nur für PIPEDA-pflichtige kommerzielle Organisationen; Behördendaten, Non-Profit-Bereich und Quebec (eigenes Gesetz seit September 2023) sind ausgenommen.'
    ],
    context:{
      adequacyNote:'EU-Angemessenheitsbeschluss NUR für kommerzielle PIPEDA-Verarbeitungen. NICHT abgedeckt: öffentliche Stellen, Bundesbehörden, Quebec-Law-25-Sachverhalte',
      mechanism:'Für PIPEDA-kommerzielle Empfänger: kein zusätzlicher Mechanismus. Für nicht-PIPEDA / öffentliche / Quebec: EU SCCs + TIA',
-     currentDevelopments:'[REVIEW: Alex DPO — Status Quebec Law 25 Umsetzung + etwaige PIPEDA-Reform Mai 2026]',
+     currentDevelopments:'Bill C-8 (Critical Cyber Systems Protection Act, Nachfolger von Bill C-26 nach Prorogation Januar 2025) seit 18.06.2025 von der Carney-Regierung wiedereingebracht, im Mai 2026 weiterhin in Ausschussprüfung. Quebec Law 25 vollständig in Kraft seit September 2023 (eigenes Gesetz, NICHT durch EU-Adäquanzbeschluss abgedeckt). OPC weiterhin primär auf Empfehlungs-Befugnisse beschränkt; Forderung nach Direkt-Sanktionsbefugnissen bleibt in der politischen Diskussion.',
      supplementaryMeasures:'Bei jedem Transfer prüfen: ist der Empfänger PIPEDA-unterliegende kommerzielle Organisation? Falls nein: SCCs + Schutzmassnahmen'
    },
    tia:'Kein TIA für EU→CA im PIPEDA-kommerziellen Bereich (Adäquanz). Ausserhalb (öffentliche Stellen, Bundesbehörden, Quebec Law 25): EU SCCs + vollständiges TIA erforderlich.'},
 
-  {code:'RS',flag:'🇷🇸',name:'Serbien',law:'ZZPL',score:0.30,riskKey:'mid',adequacy:true,
-   summary:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss vorhanden. ZZPL (Datenschutzgesetz) DSGVO-äquivalent ausgestaltet. Als jüngere Adäquanz weniger erprobt — Score etwas höher als etablierte Adäquanz-Länder.',
+  {code:'RS',flag:'🇷🇸',name:'Serbien',law:'ZZPL (Official Gazette 87/2018, in Kraft seit 21.8.2019)',score:0.30,riskKey:'mid',adequacy:false,
+   update:'⚠️ Kein EU-Angemessenheitsbeschluss nach Art. 45 DSGVO — formal unsicheres Drittland trotz DSGVO-konformem ZZPL. EU-Beitrittsverhandlungen laufen seit 2014; Konvention 108+ ratifiziert.',
+   summary:'Serbien verfügt mit dem Zakon o zaštiti podataka o ličnosti (Official Gazette 87/2018, in Kraft seit 21.8.2019) über ein materiell weitgehend an der EU-DSGVO harmonisiertes Datenschutzrecht und ist Mitglied der Europarats-Konvention 108+. Es liegt jedoch kein EU-Angemessenheitsbeschluss nach Art. 45 DSGVO vor – formal bleibt Serbien ein unsicheres Drittland. Score 0.30 ("gering-mittel") spiegelt das hohe Schutzniveau bei begrenzter Durchsetzungspraxis.',
    eeg:[1,2,1,2],
    eegText:[
-     '[REVIEW: Alex DPO — Rechtsgrundlagen für Staatszugriff in Serbien prüfen]',
-     '[REVIEW: Alex DPO — Verhältnismässigkeit / Überwachungsbefugnisse prüfen]',
-     '[REVIEW: Alex DPO — Unabhängigkeit der serbischen Datenschutzbehörde (Poverenik) prüfen]',
-     '[REVIEW: Alex DPO — Rechtsbehelfe prüfen]'
+     'Der staatliche Zugriff wird massgeblich durch den Inlandsgeheimdienst BIA (Bezbednosno-informativna agencija) sowie den militärischen Nachrichtendienst VBA und das Innenministerium (MUP) geregelt. Gesetzliche Schranken und Richtervorbehalt existieren; internationale Beobachter berichten jedoch im Kontext nationaler Sicherheitsinteressen und politischer Kontexte von Defiziten bei der praktischen Abgrenzung behördlicher Befugnisse gegenüber privaten Daten.',
+     'Die serbische Verfassung garantiert das Recht auf Datenschutz, und das Verfassungsgericht hat in der Vergangenheit anlasslose Telekommunikationsüberwachungen ohne Richtervorbehalt verworfen. In der Praxis der Strafverfolgung und nationalen Sicherheit bleibt die strikte Einhaltung der Verhältnismässigkeit ein wiederkehrender Kritikpunkt in EU-Fortschrittsberichten.',
+     'Die unabhängige Aufsichtsbehörde – der Kommissar für Information von öffentlicher Bedeutung und Schutz personenbezogener Daten (Poverenik) – ist institutionell funktionsfähig und kann Bussen bis 10 Prozent des Jahresumsatzes in Serbien androhen. Die Behörde leidet im Mai 2026 jedoch unter chronischer Unterbesetzung und mangelnden Ressourcen, was die effektive Durchsetzung insbesondere gegenüber staatlichen Stellen erschwert.',
+     'Betroffene haben ein Beschwerderecht beim Poverenik sowie das Recht auf gerichtliche Überprüfung vor dem serbischen Verwaltungsgericht. Ein verfassungsrechtlicher Schutzweg steht über das Verfassungsgericht offen. Verfahrensdauern sind in der Praxis erheblich, was die Wirksamkeit des Rechtsbehelfs de facto einschränkt.'
    ],
    context:{
-     adequacyNote:'[REVIEW: Alex DPO] EU-Angemessenheitsbeschluss — Bestätigung + Datum prüfen',
-     mechanism:'Kein TIA für EU→RS im Beschluss-Anwendungsbereich',
-     currentDevelopments:'[REVIEW: Alex DPO — ZZPL-Aktualität + EU-Beitrittsprozess-Stand Mai 2026]',
-     supplementaryMeasures:'[REVIEW: Alex DPO]'
+     adequacyNote:'Kein EU-Angemessenheitsbeschluss nach Art. 45 DSGVO. Mitglied der Europarats-Konvention 108+. ZZPL materiell weitgehend DSGVO-harmonisiert.',
+     mechanism:'EU SCCs erforderlich. Bei DSGVO-äquivalentem Schutzniveau vereinfachtes TIA möglich.',
+     currentDevelopments:'EU-Beitrittsverhandlungen seit 2014 laufend. ZZPL seit 21.8.2019 in Kraft, materiell DSGVO-harmonisiert. Poverenik chronisch unterbesetzt — Mai 2026: Durchsetzungspraxis gegenüber staatlichen Stellen begrenzt wirksam.',
+     supplementaryMeasures:'EU SCCs + DPA. Bei sensiblen Datenkategorien: zusätzliche technische Schutzmassnahmen (Verschlüsselung, Pseudonymisierung). Vereinfachtes TIA dokumentieren.'
    },
-   tia:'[REVIEW: Alex DPO] Kein TIA für EU→RS im Anwendungsbereich des Angemessenheitsbeschlusses.'},
+   tia:'TIA empfohlen, kann in vereinfachter Form erfolgen (DSGVO-ähnliches Schutzniveau, Konvention 108+). Bei sensiblen Datenkategorien oder Verdacht auf Re-Transfers in Nicht-EU-Staaten: vollumfängliches TIA mit EU SCCs und Schutzmassnahmen zwingend.'},
 
   {code:'SG',flag:'🇸🇬',name:'Singapur',law:'PDPA 2012 (Amendment 2020)',score:0.35,riskKey:'mid',adequacy:false,
    summary:'Robustes Datenschutzrecht (PDPA, 2020 reformiert), PDPC unabhängig und aktiv. Kein EU-Angemessenheitsbeschluss, aber sehr gut für internationale Transfers geeignet — häufig bevorzugter APAC-Hub. TIA erforderlich.',
@@ -654,7 +655,7 @@ const COUNTRIES = [
    eeg:[2,2,2,2],
    eegText:[
      'Staatszugriff beruht auf gesetzlicher Grundlage, aber der TOLA Act 2018 erlaubt es Behörden, Dienstleister zur Einrichtung von Zugriffsmöglichkeiten zu verpflichten — die Präzision/Begrenzung der Regeln bleibt hinter dem EU-Standard zurück.',
-     'TOLA Act und Data-Retention-Regime: Behördenzugriff teils ohne vorherigen Richtervorbehalt. ASD mit weitreichenden Auslandsbefugnissen (Five-Eyes-Mitglied). Verhältnismässigkeit kritischer Punkt — [REVIEW: Alex DPO — TOLA-Bewertung als erhöht einstufen? Score B ggf. 3]',
+     'Einstufung: 2 (mittlerer Eingriff). Der Telecommunications and Other Legislation Amendment (Assistance and Access) Act 2018 (TOLA Act) ermöglicht Behörden via Technical Capability Notices (TCN), Technologieanbieter zur Implementierung staatlicher Abhörmaßnahmen zu verpflichten – ohne richterliche "double-lock"-Kontrolle wie im UK Investigatory Powers Act. Tatsächlich wurden bisher unter 20 TARs (Technical Assistance Requests) durch ASIO, 8 durch AFP und 13 durch NSW Police erlassen; keine bekannten TCNs. "Systemic vulnerabilities" sind gesetzlich verboten, aber unbestimmt definiert. Bei sensiblen Datenkategorien manuelle Hochstufung erforderlich.',
      'Das OAIC ist unabhängig und aktiv (NDB-Scheme, 3-Tage-Meldefrist); Privacy Act Reform stärkt OAIC-Ressourcen. Aufsicht über Sicherheitsbehörden begrenzt.',
      'APP 12/13: Zugang und Berichtigung; OAIC-Beschwerdeverfahren. Strafschadenersatz noch begrenzt (Reform geplant). Rechtsbehelfe gegen Staatszugriff begrenzt wirksam.'
    ],
@@ -667,7 +668,7 @@ const COUNTRIES = [
    tia:'EU SCCs + APP-8-Verpflichtung + TIA mit expliziter TOLA-Act-Bewertung. Risikostufe mittel — insbesondere für sensible Daten.'},
 
   {code:'IN',flag:'🇮🇳',name:'Indien',law:'DPDPA 2023',score:0.45,riskKey:'mid',adequacy:false,
-   update:'📋 DPDPA-Ausführungsregeln (Digital Personal Data Protection Rules) [REVIEW: Alex DPO — Status Mai 2026: erlassen? DPBI operativ?] — Monitoring empfohlen.',
+   update:'📋 Finale DPDPA Rules am 13.11.2025 von MeitY notifiziert. Phase I sofort (DPBI operationalisiert), Phase II 13.11.2026, Phase III 13.05.2027. Bussen bis 200 crore INR. Section 7 / Schedule 2 bleibt kritisch.',
    summary:'DPDPA 2023 schafft modernen Rahmen, DPBI wird zunehmend operativ. Risikofaktoren: breite nationale Sicherheitsausnahmen (Schedule 2), DPBI-Unabhängigkeit noch nicht voll gesichert, Ausführungsrecht teils ausstehend. TIA erforderlich.',
    eeg:[3,2,2,2],
    eegText:[
@@ -679,15 +680,15 @@ const COUNTRIES = [
    context:{
      adequacyNote:'Kein EU-Angemessenheitsbeschluss',
      mechanism:'EU SCCs (Modul 2) + DPDPA-konforme Einwilligungshinweise (lokale Sprache empfohlen)',
-     currentDevelopments:'📋 DPDPA-Ausführungsregeln [REVIEW: Alex DPO — Status Mai 2026: erlassen? DPBI operativ?] — Monitoring empfohlen',
+     currentDevelopments:'📋 Der Digital Personal Data Protection Act (DPDPA 2023) erreichte einen entscheidenden Meilenstein: Die finalen DPDPA Rules wurden am 13. November 2025 vom Ministerium für Elektronik und IT (MeitY) notifiziert mit gestaffelter Umsetzung – Phase I sofort (Data Protection Board of India operationalisiert mit vier Mitgliedern), Phase II (Consent Manager) ab 13. November 2026, Phase III (alle materiellen Pflichten) ab 13. Mai 2027. Bussen bis 200 crore INR für Breach-Meldepflichten, bis 50 crore INR für sonstige Verstösse. Kritisch bleibt Section 7 / Schedule 2, der der Zentralregierung weitreichende Ausnahmebefugnisse einräumt.',
      supplementaryMeasures:'Pseudonymisierung sensibler Daten, Zugangsbeschränkungen, Verschlüsselung'
    },
    tia:'EU SCCs + DPDPA-Einwilligungshinweise + TIA mit expliziter Schedule-2-Bewertung. Risikostufe mittel. Ausführungsrecht aktiv überwachen.'},
 
-  {code:'HK',flag:'🇭🇰',name:'Hongkong',law:'PDPO (Cap. 486)',score:0.50,riskKey:'mid',adequacy:false,
-   update:'⚠️ National Security Law (2020) + Article 23 Security Law (2024) — erhöhte Bedenken Behördenzugriff/Justizunabhängigkeit. Lage aktiv überwachen.',
-   summary:'Etablierte Datenschutzpraxis (PDPO seit 1996), PCPD aktiv. Seit National Security Law (2020) und Article 23 Security Law (2024) erhöhte Risiken für Behördenzugriff und Justizunabhängigkeit. Für sensible Daten erhöhte Sorgfalt. TIA erforderlich. [REVIEW: Alex DPO — Score 0.50 ist Grenze zu „Hoch" — bewusste Einstufung prüfen, ggf. eeg C auf 4 → Score 0.55]',
-   eeg:[3,2,3,2],
+  {code:'HK',flag:'🇭🇰',name:'Hongkong',law:'PDPO (Cap. 486) · NSL 2020 · Article 23 Ordinance 2024',score:0.70,riskKey:'high',adequacy:false,
+   update:'🔴 NSL Implementing Rules Änderung 23.03.2026: Verweigerung der Passwort-Herausgabe oder Entschlüsselungshilfe an Hongkonger Polizei jetzt Straftat — gilt auch für Einwohner, Besucher und Transit-Reisende. Erweiterte Geräte-Beschlagnahmungsbefugnisse. Score von 0.50 auf 0.70 angehoben.',
+   summary:'Hongkong rückt durch Article 23 (National Security Ordinance, verabschiedet 19. März 2024) und insbesondere durch die Änderung der Implementing Rules des National Security Law am 23. März 2026 strukturell näher an Festland-China: Verweigerung der Passwort-Herausgabe oder Entschlüsselungshilfe an Hongkonger Polizei ist nun Straftat – mit Geltung auch für Einwohner, Besucher und Transit-Reisende am Hong Kong International Airport. Behörden erhielten erweiterte Befugnisse zur Beschlagnahmung persönlicher Geräte als Beweismittel. Der Privacy Commissioner for Personal Data (PCPD) bleibt formal eigenständig, faktische Unabhängigkeit in NSL-relevanten Sachverhalten ist eingeschränkt. Score von 0.50 auf 0.70 angehoben.',
+   eeg:[4,3,4,3],
    eegText:[
      'Staatszugriff beruht formal auf gesetzlicher Grundlage (NSL 2020, Article 23 Law 2024), die Regeln sind jedoch weit gefasst und schaffen erhebliche Unsicherheit über Umfang und Anwendung.',
      'NSL 2020 und Article 23 Law 2024: weitreichende Befugnisse inkl. Datenzugriff. NSL ermöglicht faktisch China-Auslieferung. Verhältnismässigkeit erheblich eingeschränkt — Tendenz steigend.',
@@ -697,7 +698,7 @@ const COUNTRIES = [
    context:{
      adequacyNote:'Kein EU-Angemessenheitsbeschluss',
      mechanism:'PCPD Model Data Processing Clauses (2023) oder EU SCCs',
-     currentDevelopments:'⚠️ National Security Law (2020) + Article 23 Security Law (2024) — erhöhte Bedenken Behördenzugriff/Justizunabhängigkeit. Lage aktiv überwachen',
+     currentDevelopments:'🔴 NSL Implementing Rules Änderung 23.03.2026: Verweigerung von Passwort-Herausgabe / Entschlüsselungshilfe an HK-Polizei jetzt Straftat (gilt auch für Besucher und Transit-Reisende). Erweiterte Geräte-Beschlagnahmungsbefugnisse. Plus Article 23 Ordinance (19.03.2024) und NSL (2020): kumulierte Verdichtung der Sicherheitsbefugnisse.',
      supplementaryMeasures:'Verschlüsselung ERFORDERLICH für sensible Daten, Datenlokalisierung prüfen, Datensparsamkeit'
    },
    tia:'PCPD Model Clauses oder EU SCCs + explizites TIA mit NSL-/Article-23-Bewertung. Risikostufe mittel (steigende Tendenz). Ergänzende Massnahmen für sensible Daten zwingend.'},
@@ -709,8 +710,8 @@ const COUNTRIES = [
    eegText:[
      'FISA 702 und der CLOUD Act sind gesetzlich verankert und öffentlich zugänglich; Executive Order 14086 ergänzt Garantien. Die Regeln sind jedoch weniger präzise begrenzt als der EU-Standard verlangt, und EO 14086 ist als Exekutivakt jederzeit änderbar.',
      'FISA 702 erlaubt Massenzugriff auf internationale Kommunikation ohne individuellen Richtervorbehalt. Aktuelle Lage Mai 2026: Die RISAA-Verlängerung von 2024 ist Ende April 2026 ausgelaufen; das Programm läuft seither nur per kurzfristiger Übergangsverlängerung, eine dauerhafte Reform/Reauthorisierung ist offen. CLOUD Act: Zugriffsanordnungen unabhängig vom Serverstandort. Verhältnismässigkeit nach EU-Massstab nicht gewährleistet.',
-     'Keine zentrale Datenschutzbehörde; FTC als de-facto-Aufsicht. FISA Court (FISC) ist geheim und einseitig. [REVIEW: Alex DPO — aktuelle Arbeitsfähigkeit und Besetzung des PCLOB unter der gegenwärtigen US-Administration Mai 2026 prüfen — der EDPB-Review hatte die volle PCLOB-Funktion als wichtig für das DPF angemahnt]',
-     'Data Protection Review Court (DPRC) unter EO 14086: Beschwerderecht für EU-Bürger, aber Unabhängigkeit und Wirksamkeit umstritten; der EDPB hat mehr Transparenz angemahnt. [REVIEW: Alex DPO — aktuelle DPRC-Funktionsfähigkeit Mai 2026 prüfen]'
+     'Das Privacy and Civil Liberties Oversight Board (PCLOB) ist im Mai 2026 in seiner Funktionsfähigkeit massiv eingeschränkt: Infolge der Entlassung dreier demokratischer Mitglieder durch die Trump-Administration am 27. Januar 2025 verfügt das Gremium aktuell über kein beschlussfähiges Quorum (nur Beth Ann Williams als einziges verbliebenes Mitglied; die im Mai 2025 gerichtlich angeordnete Wiedereinsetzung der demokratischen Mitglieder wurde durch den US Court of Appeals am 1. Juli 2025 ausgesetzt). Die regulatorische Kontrollfunktion als unabhängiges, pluralistisches Gremium ist faktisch gelähmt.',
+     'Das Data Protection Review Court (DPRC) unter Executive Order 14086 ist eingerichtet und Richter sind bestellt. Das Urteil des Gerichts der Europäischen Union (EuG) in der Rechtssache Latombe vom 3. September 2025 hat die Gültigkeit des EU-US Data Privacy Framework (DPF) bestätigt. Bei strenger Auslegung bestehen Bedenken bezüglich der nachhaltigen Aufsichtsfunktion durch ein beschlussunfähiges PCLOB.'
    ],
    context:{
      adequacyNote:'Kein allgemeiner EU-Angemessenheitsbeschluss; DPF-Angemessenheit nur für DPF-zertifizierte Empfänger. DPF vom EuG am 3.9.2025 (Latombe) bestätigt; mögliche CJEU-Appellation / NOYB-Klage beobachten',
@@ -721,7 +722,7 @@ const COUNTRIES = [
    tia:'SCHRITT 1: DPF-Zertifizierung des Empfängers auf dataprivacyframework.gov prüfen (Status „Active", HR-Daten ggf. ausdrücklich abgedeckt) → falls zertifiziert, kein TIA nötig, Angemessenheit in der RoPA dokumentieren. SCHRITT 2: falls nicht zertifiziert — EU SCCs + vollständiges TIA, das FISA 702 (inkl. Reauthorisierungs-Unsicherheit), CLOUD Act und das fehlende Bundesgesetz adressiert. SCHRITT 3: ergänzende Massnahmen wie oben. Risikostufe hoch je nach Verarbeitungsart und DPF-Status.'},
 
   {code:'VN',flag:'🇻🇳',name:'Vietnam',law:'PDPD (Decree 13/2023/ND-CP)',score:0.70,riskKey:'high',adequacy:false,
-   update:'📋 PDPD-Ausführungsbestimmungen (2024/2025) [REVIEW: Alex DPO — Status Mai 2026, MPS-Fristen/Formulare] — Umsetzungserfahrung begrenzt.',
+   update:'🔴 PDPL (Law No. 91/2025/QH15) seit 1.1.2026 in Kraft, ersetzt PDPD 2023. Implementing Decree 356/2025/ND-CP zeitgleich. Erweiterte Extraterritorialität, verpflichtende DPIAs, ohne Übergangsfristen. Bussen bis 5% Jahresumsatz bei rechtswidrigen Cross-Border-Transfers.',
    summary:'PDPD 2023 ist ein moderner Rahmen, aber das Cybersecurity Law (2019) schreibt Datenlokalisierung vor und ermöglicht weitreichenden Staatszugriff. Vor jedem grenzüberschreitenden Transfer ist ein MPS-Dossier einzureichen. TIA erforderlich, mehrschrittig.',
    eeg:[4,3,4,3],
    eegText:[
@@ -733,7 +734,7 @@ const COUNTRIES = [
    context:{
      adequacyNote:'Kein EU-Angemessenheitsbeschluss',
      mechanism:'Einwilligung + MPS-Dossier (60-Tage-Review) + Datenlokalisierung + EU SCCs',
-     currentDevelopments:'📋 PDPD-Ausführungsbestimmungen (2024/2025) [REVIEW: Alex DPO — Status Mai 2026, MPS-Fristen/Formulare] — Umsetzungserfahrung begrenzt',
+     currentDevelopments:'🔴 Personal Data Protection Law (PDPL, Law No. 91/2025/QH15) wurde am 26. Juni 2025 verabschiedet und ist seit 1. Januar 2026 in Kraft – ersetzt das vorherige Personal Data Protection Decree 13/2023 (PDPD). Implementing Decree 356/2025/ND-CP vom 31. Dezember 2025 ist zeitgleich in Kraft und bringt erweiterten extraterritorialen Anwendungsbereich, verpflichtende Impact Assessments, strenge Consent- und Cross-Border-Standards ohne Übergangsfristen. Bussen bis 5 Prozent Jahresumsatz bei rechtswidrigen Cross-Border-Transfers, bis 10x Umsatz aus illegalem Datenhandel, bis 3 Mrd. VND für sonstige Verstösse. Ministerium für öffentliche Sicherheit (MPS) als Hauptregulator; keine unabhängige Datenschutzbehörde.',
      supplementaryMeasures:'Ende-zu-Ende-Verschlüsselung ZWINGEND, Datensparsamkeit (keine sensiblen Daten falls vermeidbar), klare Vertragspflichten des Importeurs'
    },
    tia:'Mehrschrittig: (1) Einwilligung einholen, (2) MPS-Dossier einreichen, (3) domestische Kopie vietnamesischer Bürgerdaten, (4) EU SCCs, (5) vollständiges TIA mit Staatszugriffsbewertung. Risikostufe hoch. Lokale Rechtsberatung in Vietnam empfohlen.'},
