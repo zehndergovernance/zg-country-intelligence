@@ -237,6 +237,16 @@ h2{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-we
       <a href="https://zehndergovernance.com/#products">Produkt kaufen →</a>
       <div style="margin-top:12px;"><button onclick="doLogout()" style="background:transparent;border:none;color:rgba(255,255,255,.3);font-size:11px;cursor:pointer;">Anderes Konto verwenden</button></div>
     </div>
+    <div id="setPasswordForm" style="display:none">
+      <div class="auth-title">Willkommen bei Zehnder Governance</div>
+      <div class="auth-sub">Legen Sie einmalig Ihr Passwort fest, um Ihren Portal-Zugang zu aktivieren.</div>
+      <form onsubmit="event.preventDefault();doSetPassword();return false;" autocomplete="on">
+      <input class="auth-inp" type="password" id="newPwInput" name="new-password" autocomplete="new-password" required minlength="8" placeholder="Neues Passwort (mind. 8 Zeichen)">
+      <input class="auth-inp" type="password" id="newPwInput2" name="new-password" autocomplete="new-password" required minlength="8" placeholder="Passwort wiederholen">
+      <button type="submit" class="auth-btn" id="setPwBtn">Passwort festlegen</button>
+      </form>
+      <div class="auth-err" id="setPwErr"></div>
+    </div>
   </div>
 </div>
 
@@ -1002,6 +1012,8 @@ const _SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIs
 const {createClient} = supabase;
 const sb = createClient(_SUPA_URL, _SUPA_KEY);
 window.sb = sb;
+const _authHash = new URLSearchParams((window.location.hash || '').replace(/^#/, ''));
+const NEEDS_PW_SETUP = _authHash.get('type') === 'invite' || _authHash.get('type') === 'recovery';
 
 async function _checkAuth(allowedPlans) {
   const {data:{session}} = await sb.auth.getSession();
@@ -1055,10 +1067,28 @@ async function doLogout() {
   await sb.auth.signOut();
   location.reload();
 }
+function _showSetPassword() {
+  document.getElementById('loginForm').style.display='none';
+  document.getElementById('authSpinner').style.display='none';
+  document.getElementById('noAccess').style.display='none';
+  document.getElementById('setPasswordForm').style.display='block';
+}
+async function doSetPassword() {
+  const p1 = document.getElementById('newPwInput').value;
+  const p2 = document.getElementById('newPwInput2').value;
+  const err = document.getElementById('setPwErr');
+  err.style.display='none';
+  if (p1.length < 8) { err.textContent='Passwort muss mindestens 8 Zeichen haben.'; err.style.display='block'; return; }
+  if (p1 !== p2) { err.textContent='Die Passwörter stimmen nicht überein.'; err.style.display='block'; return; }
+  const {error} = await sb.auth.updateUser({password: p1});
+  if (error) { err.textContent='Konnte Passwort nicht speichern: '+error.message; err.style.display='block'; return; }
+  document.getElementById('setPasswordForm').style.display='none';
+  _checkAuth(['tia', 'standard', 'enterprise']);
+}
 </script>
 
 <script>
-_checkAuth(['tia', 'standard', 'enterprise']);
+if (NEEDS_PW_SETUP) { _showSetPassword(); } else { _checkAuth(['tia', 'standard', 'enterprise']); }
 </script>
 
 <!-- Drive-Proxy-Client (K9 Stufe 2). Source-of-Truth: _shared/drive-proxy-client.js (byte-identisch ohne JSDoc-Header) -->
